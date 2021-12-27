@@ -8,9 +8,9 @@ import {
 	Box,
 	Tabs,
 	Tab,
+    TextField
 } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
-import TextField from '@mui/material/TextField';
 
 const style = {
 	display: 'flex',
