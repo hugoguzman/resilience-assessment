@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import {
 	Card,
 	CardHeader,
@@ -18,7 +18,9 @@ const style = {
 } as const;
 
 export const LayoutCards = () => {
-    const [value, setValue] = React.useState('one');
+	const [tabOpen, setTabOpen] = useState(true);
+
+    const [value, setValue] = useState('one');
     
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -42,6 +44,10 @@ export const LayoutCards = () => {
                         <Tab value="two" label="Constants" />
 					</Tabs>
 				</Box>
+				{tabOpen ? (
+				<Box
+				//  sx={{visibility: 'hidden'}} ** use this prop to toggle card content display using button tab **
+				 >
 				<CardHeader
 					avatar={
 						<IconButton onClick={() => console.log('open help modal')}>
@@ -78,6 +84,49 @@ export const LayoutCards = () => {
 					action={<TextField sx={{margin: 2, width: '50%'}} variant='outlined' size='small' />}
 					title='Parameter'
 				/>
+				</Box>
+				) : (
+					<Box
+				//  sx={{visibility: 'hidden'}} ** use this prop to toggle card content display using button tab **
+				 >
+				<CardHeader
+					avatar={
+						<IconButton onClick={() => console.log('open help modal')}>
+							<HelpIcon />
+						</IconButton>
+					}
+					action={<TextField sx={{margin: 2, width: '50%'}} variant='outlined' size='small' />}
+					title='Constant'
+				/>
+				<CardHeader 
+					avatar={
+						<IconButton onClick={() => console.log('open help modal')}>
+							<HelpIcon />
+						</IconButton>
+					}
+					action={<TextField sx={{margin: 2, width: '50%'}} variant='outlined' size='small' />}
+					title='Constant'
+				/>
+				<CardHeader
+					avatar={
+						<IconButton onClick={() => console.log('open help modal')}>
+							<HelpIcon />
+						</IconButton>
+					}
+					action={<TextField sx={{margin: 2, width: '50%'}} variant='outlined' size='small' />}
+					title='Constant'
+				/>
+				<CardHeader
+					avatar={
+						<IconButton onClick={() => console.log('open help modal')}>
+							<HelpIcon />
+						</IconButton>
+					}
+					action={<TextField sx={{margin: 2, width: '50%'}} variant='outlined' size='small' />}
+					title='Constant'
+				/>
+				</Box>
+				)}
 				{/* <CardContent>
 					<Typography
 						variant='body2'
