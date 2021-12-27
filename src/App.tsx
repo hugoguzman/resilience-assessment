@@ -1,12 +1,15 @@
 import React from 'react';
 import { Layout } from './Components/Layout';
+import { LayoutGrid } from './Components/LayoutGrid';
 
 
 
 function App() {
   return (
     <div>
-      <Layout />
+      <Layout props>
+        <LayoutGrid />
+      </Layout>
     </div>
   );
 }
