@@ -9,9 +9,9 @@ export const Layout = ({ children, props}:{children:any,props:any}) => {
     return (
         <div className='root'>
         {/* <Box sx={{ flexGrow: 1 }}> */}
-         <AppBar color='primary' elevation={0} position='static' sx={{ margin: 0}}>
+         <AppBar color='transparent' elevation={1} position='static' sx={{ margin: 0}}>
              <Toolbar>
-                <Typography variant='h5'>
+                <Typography variant='h4'>
                    Resilience Design Assesment Tool
                 </Typography>
              </Toolbar>

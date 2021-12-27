@@ -27,7 +27,7 @@ export const LayoutCards = () => {
 		<div>
 			<Card elevation={0}>
 				<span style={{ paddingTop: 10}}>
-					<Typography>1A Section Title</Typography>
+					<Typography>1A. Section Title</Typography>
 				</span>
 				<Box>
 					{' '}
@@ -48,9 +48,17 @@ export const LayoutCards = () => {
 							<HelpIcon />
 						</IconButton>
 					}
-					action={<TextField variant='outlined' size='small' />}
-					title='Title'
-					subheader='subHeader'
+					action={<TextField sx={{margin: 2, width: '50%'}} variant='outlined' size='small' />}
+					title='Parameter'
+				/>
+				<CardHeader 
+					avatar={
+						<IconButton onClick={() => console.log('open help modal')}>
+							<HelpIcon />
+						</IconButton>
+					}
+					action={<TextField sx={{margin: 2, width: '50%'}} variant='outlined' size='small' />}
+					title='Parameter'
 				/>
 				<CardHeader
 					avatar={
@@ -58,9 +66,8 @@ export const LayoutCards = () => {
 							<HelpIcon />
 						</IconButton>
 					}
-					action={<TextField variant='outlined' size='small' />}
-					title='Title'
-					subheader='subHeader'
+					action={<TextField sx={{margin: 2, width: '50%'}} variant='outlined' size='small' />}
+					title='Parameter'
 				/>
 				<CardHeader
 					avatar={
@@ -68,19 +75,8 @@ export const LayoutCards = () => {
 							<HelpIcon />
 						</IconButton>
 					}
-					action={<TextField variant='outlined' size='small' />}
-					title='Title'
-					subheader='subHeader'
-				/>
-				<CardHeader
-					avatar={
-						<IconButton onClick={() => console.log('open help modal')}>
-							<HelpIcon />
-						</IconButton>
-					}
-					action={<TextField variant='outlined' size='small' />}
-					title='Title'
-					subheader='subHeader'
+					action={<TextField sx={{margin: 2, width: '50%'}} variant='outlined' size='small' />}
+					title='Parameter'
 				/>
 				{/* <CardContent>
 					<Typography
