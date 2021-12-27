@@ -4,6 +4,7 @@ import { Toolbar } from '@mui/material'
 import { Typography } from '@mui/material'
 import { Box } from '@mui/material'
 
+
 export const Layout = ({ children, props}:{children:any,props:any}) => {
     return (
         <div className='root'>
@@ -11,7 +12,7 @@ export const Layout = ({ children, props}:{children:any,props:any}) => {
          <AppBar color='primary' elevation={0} position='static' sx={{ margin: 0}}>
              <Toolbar>
                 <Typography>
-                    Welcome to Resillience App
+                    Welcome to Resilience App
                 </Typography>
              </Toolbar>
          </AppBar>
@@ -20,6 +21,7 @@ export const Layout = ({ children, props}:{children:any,props:any}) => {
            <div className='page'>
                {children}
            </div>
+           <footer style={{textAlign: 'center'}}> ©FIU 2021</footer>
         </div>
     )
 }
