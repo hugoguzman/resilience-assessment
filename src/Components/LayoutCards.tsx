@@ -18,6 +18,11 @@ const style = {
 } as const;
 
 export const LayoutCards = () => {
+    const [value, setValue] = React.useState('one');
+    
+    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+        setValue(newValue);
+    };
 	return (
 		<div>
 			<Card elevation={0}>
@@ -26,8 +31,15 @@ export const LayoutCards = () => {
 				</span>
 				<Box>
 					{' '}
-					<Tabs textColor='secondary' indicatorColor='secondary'>
-						<Tab label='Input Parameters' /> <Tab label='Constants' />
+					<Tabs
+                        value={value}
+                        onChange={handleChange}
+                        textColor="primary"
+                        indicatorColor="primary"
+                        aria-label="secondary tabs example"
+                        >
+                        <Tab value="one" label="Input Parameters" />
+                        <Tab value="two" label="Constants" />
 					</Tabs>
 				</Box>
 				<CardHeader
