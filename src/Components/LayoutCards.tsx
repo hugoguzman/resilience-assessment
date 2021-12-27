@@ -20,11 +20,10 @@ const style = {
 export const LayoutCards = () => {
 	return (
 		<div>
-			
 			<Card elevation={0}>
-            <span>
-				<Typography>HEADING</Typography>
-			</span>
+				<span style={{ paddingTop: 10}}>
+					<Typography>1A Section Title</Typography>
+				</span>
 				<Box>
 					{' '}
 					<Tabs textColor='secondary' indicatorColor='secondary'>
@@ -51,7 +50,27 @@ export const LayoutCards = () => {
 					title='Title'
 					subheader='subHeader'
 				/>
-				<CardContent>
+				<CardHeader
+					avatar={
+						<IconButton onClick={() => console.log('open help modal')}>
+							<HelpIcon />
+						</IconButton>
+					}
+					action={<TextField variant='outlined' size='small' />}
+					title='Title'
+					subheader='subHeader'
+				/>
+				<CardHeader
+					avatar={
+						<IconButton onClick={() => console.log('open help modal')}>
+							<HelpIcon />
+						</IconButton>
+					}
+					action={<TextField variant='outlined' size='small' />}
+					title='Title'
+					subheader='subHeader'
+				/>
+				{/* <CardContent>
 					<Typography
 						variant='body2'
 						color='textSecondary'
@@ -62,7 +81,7 @@ export const LayoutCards = () => {
 						quisquam qui unde nihil iste eius ratione blanditiis! At, asperiores
 						sint.
 					</Typography>
-				</CardContent>
+				</CardContent> */}
 				{/* <CardContent >
                 <TextField sx={{width:'100%'}} label='Outlined secondary' color='primary' focused />
                 </CardContent> */}

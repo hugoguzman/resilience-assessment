@@ -11,8 +11,8 @@ export const Layout = ({ children, props}:{children:any,props:any}) => {
         {/* <Box sx={{ flexGrow: 1 }}> */}
          <AppBar color='primary' elevation={0} position='static' sx={{ margin: 0}}>
              <Toolbar>
-                <Typography>
-                    Welcome to Resilience App
+                <Typography variant='h5'>
+                   Resilience Design Assesment Tool
                 </Typography>
              </Toolbar>
          </AppBar>
