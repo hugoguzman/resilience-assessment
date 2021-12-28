@@ -5,7 +5,7 @@ import HelpIcon from '@mui/icons-material/Help';
 
 export const ParameterCard = () => {
 	return (
-			<Card>
+			<Card elevation={0}>
 				<span style={{ paddingTop: 10}}>
 					<Typography sx={{fontWeight: 'bold'}}>1A. Section Title</Typography>
 				</span>
