@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Grid, Card, Typography } from '@mui/material';
-import { LayoutCards } from './LayoutCards';
+import LayoutCards from './LayoutCards';
 
 
 export const LayoutGrid = () => {

@@ -1,53 +1,69 @@
-import { useState } from 'react';
-import {
-	Card,
-	CardHeader,
-	CardContent,
-	IconButton,
-	Typography,
-	Box,
-	Tabs,
-	Tab,
-	TextField,
-} from '@mui/material';
-import HelpIcon from '@mui/icons-material/Help';
+import * as React from 'react';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import { ParameterCard } from './ParameterCard';
 import { ConstantsCard } from './ConstantsCard';
 
-const style = {
-	display: 'flex',
-	flexDirection: 'row',
-} as const;
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
 
-export const LayoutCards = () => {
-	const [tabOpen, setTabOpen] = useState(true);
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
 
-	const [value, setValue] = useState('one');
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
 
-	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-		setValue(newValue);
-	};
-	return (
-		<div>
-			<Box>
-				<span style={{ paddingTop: 10 }}>
-					<Typography>1A. Section Title</Typography>
-				</span>
-				<Box>
-					{' '}
-					<Tabs
-						value={value}
-						onChange={handleChange}
-						textColor='primary'
-						indicatorColor='primary'
-						aria-label='secondary tabs example'
-					>
-						<Tab value='one' label='Input Parameters' onClick={() => setTabOpen(!tabOpen)}/>
-						<Tab value='two' label='Constants' />
-					</Tabs>
-				</Box>
-				{tabOpen ? <ParameterCard /> : <ConstantsCard />}
-			</Box>
-		</div>
-	);
-};
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+export default function LayoutCards() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Input Parameters" {...a11yProps(0)} />
+          <Tab label="Constants" {...a11yProps(1)} />
+          {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
+        </Tabs>
+      </Box>
+      <TabPanel value={value} index={0}>
+        <ParameterCard />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <ConstantsCard />
+      </TabPanel>
+      {/* <TabPanel value={value} index={2}>
+        Item Three
+      </TabPanel> */}
+    </Box>
+  );
+}

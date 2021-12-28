@@ -1,14 +1,14 @@
 import React from 'react'
-import { Box, Card, CardHeader,TextField, IconButton, } from '@mui/material';
+import { Box, Card, CardHeader,TextField, IconButton, Typography } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 
 
 export const ConstantsCard = () => {
     return (
-        <Box
-		//  sx={{visibility: 'hidden'}} ** use this prop to toggle card content display using button tab **
-		>
 			<Card>
+				<span style={{ paddingTop: 10}}>
+					<Typography sx={{fontWeight: 'bold'}}>1A. Section Title</Typography>
+				</span>
 				<CardHeader
 					avatar={
 						<IconButton onClick={() => console.log('open help modal')}>
@@ -70,6 +70,5 @@ export const ConstantsCard = () => {
 					title='CONSTANTS'
 				/>
 			</Card>
-		</Box>
     )
 }

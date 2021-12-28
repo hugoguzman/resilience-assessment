@@ -1,14 +1,14 @@
 import React from 'react';
-import { Box, Card, CardHeader,TextField, IconButton, } from '@mui/material';
+import { Card, CardHeader,TextField, IconButton, Typography } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 
 
 export const ParameterCard = () => {
 	return (
-		<Box
-		//  sx={{visibility: 'hidden'}} ** use this prop to toggle card content display using button tab **
-		>
 			<Card>
+				<span style={{ paddingTop: 10}}>
+					<Typography sx={{fontWeight: 'bold'}}>1A. Section Title</Typography>
+				</span>
 				<CardHeader
 					avatar={
 						<IconButton onClick={() => console.log('open help modal')}>
@@ -22,7 +22,7 @@ export const ParameterCard = () => {
 							size='small'
 						/>
 					}
-					title='Parameter'
+					title='PARAMETERS'
 				/>
 				<CardHeader
 					avatar={
@@ -37,7 +37,7 @@ export const ParameterCard = () => {
 							size='small'
 						/>
 					}
-					title='Parameter'
+					title='PARAMETERS'
 				/>
 				<CardHeader
 					avatar={
@@ -52,7 +52,7 @@ export const ParameterCard = () => {
 							size='small'
 						/>
 					}
-					title='Parameter'
+					title='PARAMETERS'
 				/>
 				<CardHeader
 					avatar={
@@ -67,9 +67,8 @@ export const ParameterCard = () => {
 							size='small'
 						/>
 					}
-					title='Parameter'
+					title='PARAMETERS'
 				/>
 			</Card>
-		</Box>
 	);
 };
