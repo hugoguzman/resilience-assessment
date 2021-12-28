@@ -2,7 +2,6 @@ import React from 'react'
 import { AppBar } from '@mui/material'
 import { Toolbar } from '@mui/material'
 import { Typography } from '@mui/material'
-import { Box } from '@mui/material'
 
 
 export const Layout = ({ children, props}:{children:any,props:any}) => {
@@ -15,10 +14,11 @@ export const Layout = ({ children, props}:{children:any,props:any}) => {
                 </Typography>
              </Toolbar>
          </AppBar>
-
+           
            <div className='page'>
                {children}
            </div>
+           {/* ^^^ dom nesting issue is being caused by this ^^^ */}
            <footer style={{textAlign: 'center'}}> ©FIU 2021</footer>
         </div>
     )

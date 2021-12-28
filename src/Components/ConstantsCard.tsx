@@ -10,6 +10,7 @@ export const ConstantsCard = () => {
 					<Typography sx={{fontWeight: 'bold'}}>1A. Section Title</Typography>
 				</span>
 				<CardHeader
+					sx={{display: 'flex'}}
 					avatar={
 						<IconButton onClick={() => console.log('open help modal')}>
 							<HelpIcon />
@@ -17,7 +18,7 @@ export const ConstantsCard = () => {
 					}
 					action={
 						<TextField
-							sx={{ margin: 2, width: '50%' }}
+							sx={{ margin: 1, width: '50%' }}
 							variant='outlined'
 							size='small'
 						/>
@@ -25,6 +26,7 @@ export const ConstantsCard = () => {
 				title='CONSTANTS'
 				/>
 				<CardHeader
+					sx={{display: 'flex'}}
 					avatar={
 						<IconButton onClick={() => console.log('open help modal')}>
 							<HelpIcon />
@@ -32,7 +34,7 @@ export const ConstantsCard = () => {
 					}
 					action={
 						<TextField
-							sx={{ margin: 2, width: '50%' }}
+							sx={{ margin: 1, width: '50%' }}
 							variant='outlined'
 							size='small'
 						/>
@@ -40,6 +42,7 @@ export const ConstantsCard = () => {
 					title='CONSTANTS'
 				/>
 				<CardHeader
+					sx={{display: 'flex'}}
 					avatar={
 						<IconButton onClick={() => console.log('open help modal')}>
 							<HelpIcon />
@@ -47,7 +50,7 @@ export const ConstantsCard = () => {
 					}
 					action={
 						<TextField
-							sx={{ margin: 2, width: '50%' }}
+							sx={{ margin: 1, width: '50%' }}
 							variant='outlined'
 							size='small'
 						/>
@@ -55,6 +58,7 @@ export const ConstantsCard = () => {
 					title='CONSTANTS'
 				/>
 				<CardHeader
+					sx={{display: 'flex'}}
 					avatar={
 						<IconButton onClick={() => console.log('open help modal')}>
 							<HelpIcon />
@@ -62,7 +66,7 @@ export const ConstantsCard = () => {
 					}
 					action={
 						<TextField
-							sx={{ margin: 2, width: '50%' }}
+							sx={{ margin: 1, width: '50%' }}
 							variant='outlined'
 							size='small'
 						/>
