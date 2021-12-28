@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from "react-router-dom";
+import TopAppBar from './AppBar';
+import Home from './Home';
+import HealthandWellbeing from './HealthandWellbeing';
+import EconomyandSociety from './EconomyandSociety';
+import InfrastructureandEnvironment from './InfrastructureandEnvironment';
+import LeadershipandStrategy from './LeadershipandStrategy';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TopAppBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="health-and-wellbeing" element={<HealthandWellbeing />} />
+        <Route path="economy-and-society" element={<EconomyandSociety />} />
+        <Route path="infrastructure-and-environment" element={<InfrastructureandEnvironment />} />
+        <Route path="leadership-and-strategy" element={<LeadershipandStrategy />} />
+      </Routes>
     </div>
   );
 }
