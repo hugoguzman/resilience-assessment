@@ -2,7 +2,6 @@ import React from 'react';
 import {
 	Card,
 	CardHeader,
-	CardContent,
 	IconButton,
 	Typography,
 	Box,
@@ -11,11 +10,6 @@ import {
     TextField
 } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
-
-const style = {
-	display: 'flex',
-	flexDirection: 'row',
-} as const;
 
 export const LayoutCards = () => {
     const [value, setValue] = React.useState('one');
