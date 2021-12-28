@@ -19,15 +19,25 @@ const NavDrawer = ({ openDrawer, setOpenDrawer }: {openDrawer: any, setOpenDrawe
 				<ListItem divider button onClick={() => setOpenDrawer(false)}>
 					<Link
 						to={{
-							pathname: '/usmap',
+							pathname: '/health-and-wellbeing',
 						}}
 					>
-						<ListItemText primary='Map' />
+						<ListItemText primary='Health & Wellbeing' />
 					</Link>
 				</ListItem>
 				<ListItem divider button onClick={() => setOpenDrawer(false)}>
-					<Link to='/counties'>
-						<ListItemText primary='Counties' />
+					<Link to='/economy-and-society'>
+						<ListItemText primary='Economy & Society' />
+					</Link>
+				</ListItem>
+				<ListItem divider button onClick={() => setOpenDrawer(false)}>
+					<Link to='/infrastructure-and-environment'>
+						<ListItemText primary='Infrastructure & Environment' />
+					</Link>
+				</ListItem>
+				<ListItem divider button onClick={() => setOpenDrawer(false)}>
+					<Link to='/leadership-and-strategy'>
+						<ListItemText primary='Leadership & Strategy' />
 					</Link>
 				</ListItem>
 			</List>

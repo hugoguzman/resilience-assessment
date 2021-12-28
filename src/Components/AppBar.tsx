@@ -7,6 +7,10 @@ import { Link, Outlet } from "react-router-dom";
 import NavDrawer from './NavDrawer';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
+
+
 
 
 
@@ -36,6 +40,23 @@ export default function TopAppBar() {
               <Tab label="Infrastructure & Environment" to ='/infrastructure-and-environment' component={Link} />
               <Tab label='Leadership & Strategy' to ='/leadership-and-strategy' component={Link} />
             </Tabs>)}
+            {isMobile ? (
+							<IconButton onClick={() => setOpenDrawer(true)}>
+								<MenuIcon />
+							</IconButton>
+						) : ( null
+							// <IconButton
+							// 	size='large'
+							// 	edge='start'
+							// 	color='inherit'
+							// 	aria-label='github'
+							// 	sx={{ mr: 0 }}
+							// 	target='_blank'
+							// 	href='https://github.com/hugoguzman/fema-buyouts-orgtypes.git'
+							// >
+							// 	<GitHubIcon />
+							// </IconButton>
+						)}
         </Toolbar>
       </AppBar>
       <Outlet />
