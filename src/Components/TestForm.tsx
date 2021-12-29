@@ -1,6 +1,7 @@
 import { Button, TextField } from '@mui/material';
 import * as React from 'react';
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
+import { MyForm } from './MyForm';
 
 interface Values {
 	firstName: string;
@@ -21,35 +22,44 @@ export const TestForm: React.FC<Props> = ({ onSubmit }) => {
 			}}
 		>
 			{({ values, handleChange, handleBlur }) => (
-				<Form>
-					<div>
-						<TextField
-							placeholder='first name'
-							name='firstName'
-							value={values.firstName}
-							onChange={handleChange}
-							onBlur={handleBlur}
-						/>
+				<Form style={{ minWidth: '100%' }}>
+					<div
+						style={{
+							display: 'flex',
+							flex: 1,
+							justifyContent: 'space-evenly',
+							minWidth: '100%',
+						}}
+					>
+						<Button>click</Button>
+						<p>hello, is there anybody in there?</p>
+						<Field name='firstName' placeholder='first name' component={MyForm} />
 					</div>
-					<div>
-						<TextField
-							placeholder='last name'
-							name='lastName'
-							value={values.lastName}
-							onChange={handleChange}
-							onBlur={handleBlur}
-						/>
+					<div
+						style={{
+							display: 'flex',
+							flex: 1,
+							justifyContent: 'space-evenly',
+							minWidth: '100%',
+						}}
+					>
+						<Button>click</Button>
+						<p>hello, is there anybody in there?</p>
+						<Field name='lastName' placeholder='last name' component={MyForm}/>
 					</div>
-					<div>
-						<TextField
-							placeholder='email'
-							name='email'
-							value={values.email}
-							onChange={handleChange}
-							onBlur={handleBlur}
-						/>
+					<div
+						style={{
+							display: 'flex',
+							flex: 1,
+							justifyContent: 'space-evenly',
+							minWidth: '100%',
+						}}
+					>
+						<Button>click</Button>
+						<p>hello, is there anybody in there?</p>
+						<Field name='email' placeholder='email' component={MyForm}/>
 					</div>
-                    <Button type='submit'>submit</Button>
+					<Button type='submit'>submit</Button>
 					<pre>{JSON.stringify(values, null, 2)}</pre>
 				</Form>
 			)}

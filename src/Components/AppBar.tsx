@@ -23,7 +23,7 @@ export default function TopAppBar() {
 
   return (
     <>
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar 
       color="transparent"
       elevation={0}
