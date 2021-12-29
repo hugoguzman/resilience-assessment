@@ -1,10 +1,9 @@
-import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { ParameterCard } from './ParameterCard';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import * as React from 'react';
 import { ConstantsCard } from './ConstantsCard';
+import { ParameterCard } from './ParameterCard';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -24,7 +23,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 0, marginTop: 3 }}>
+        <Box sx={{ p: 0, marginTop: 3, width: '100%' }}>
           {children}
         </Box>
       )}
