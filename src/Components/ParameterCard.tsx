@@ -10,7 +10,7 @@ export const ParameterCard = () => {
 					<Typography sx={{fontWeight: 'bold'}}>1A. Section Title</Typography>
 				</span>
 				<CardHeader
-					sx={{display: 'flex'}}
+					
 					avatar={
 						<IconButton onClick={() => console.log('open help modal')}>
 							<HelpIcon />
@@ -26,7 +26,7 @@ export const ParameterCard = () => {
 					title='PARAMETERS'
 				/>
 				<CardHeader
-					sx={{display: 'flex'}}
+					
 					avatar={
 						<IconButton onClick={() => console.log('open help modal')}>
 							<HelpIcon />
@@ -42,7 +42,7 @@ export const ParameterCard = () => {
 					title='PARAMETERS'
 				/>
 				<CardHeader
-					sx={{display: 'flex'}}
+					
 					avatar={
 						<IconButton onClick={() => console.log('open help modal')}>
 							<HelpIcon />
@@ -58,7 +58,7 @@ export const ParameterCard = () => {
 					title='PARAMETERS'
 				/>
 				<CardHeader
-					sx={{display: 'flex'}}
+					
 					avatar={
 						<IconButton onClick={() => console.log('open help modal')}>
 							<HelpIcon />

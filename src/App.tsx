@@ -19,6 +19,7 @@ function App() {
         <Route path="infrastructure-and-environment" element={<InfrastructureandEnvironment />} />
         <Route path="leadership-and-strategy" element={<LeadershipandStrategy />} />
       </Routes>
+      <footer style={{background: 'rgba(0,0,0, 0.1)'}}> ©FIU 2021</footer>
     </div>
   );
 }
