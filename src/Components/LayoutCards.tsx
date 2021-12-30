@@ -23,7 +23,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 0, marginTop: 3, width: '100%' }}>
+        <Box sx={{ p: 0, marginTop: 3, width: '100%'}}>
           {children}
         </Box>
       )}
@@ -55,7 +55,9 @@ export default function LayoutCards() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ParameterCard />
+        <ParameterCard onSubmit={({ inputParam, inputParam1, inputParam2, inputParam3 }) => {
+          console.log(inputParam, inputParam1, inputParam2, inputParam3)
+        }}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <ConstantsCard />
@@ -64,5 +66,6 @@ export default function LayoutCards() {
         Item Three
       </TabPanel> */}
     </Box>
+   
   );
 }

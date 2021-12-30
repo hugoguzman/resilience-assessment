@@ -9,6 +9,9 @@ interface Props extends FieldProps {
 export const MyForm: React.FC<Props> = ({ placeholder, field }) => {
 	return (
 		<TextField
+			sx={{ margin: 1, width: '50%', }}
+			// variant='outlined'
+			size='small'
 			placeholder={placeholder} {...field} 
 		/>
 	);

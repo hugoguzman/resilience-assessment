@@ -1,8 +1,7 @@
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import * as React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { MyForm } from './myForm';
-import { Padding } from '@mui/icons-material';
 
 interface Values {
 	firstName: string;
@@ -31,11 +30,12 @@ export const TestForm: React.FC<Props> = ({ onSubmit }) => {
 							justifyContent: 'space-evenly',
 							minWidth: '100%',
 							margin: 'auto',
-							padding: 6
+							padding: 6,
+							borderBottom: '1px solid grey'
 						}}
 					>
 						<Button>click</Button>
-						<p style={{display: 'block', width: '16rem'}}>hello, is there anybody in there?</p>
+						<p style={{display: 'block', width: '16rem'}}><Typography>hello, is there anybody in there?</Typography></p>
 						<Field name='firstName' placeholder='first name' component={MyForm} />
 					</div>
 					<div
@@ -45,11 +45,12 @@ export const TestForm: React.FC<Props> = ({ onSubmit }) => {
 							justifyContent: 'space-evenly',
 							minWidth: '100%',
 							margin: 'auto',
-							padding: 6
+							padding: 6,
+							borderBottom: '1px solid grey'
 						}}
 					>
 						<Button>click</Button>
-						<p style={{display: 'block', width: '16rem'}}>hello, is there anybody in there? hello, is there anybody in there?</p>
+						<p style={{display: 'block', width: '16rem'}}><Typography>hello, is there anybody in there?</Typography></p>
 						<Field name='lastName' placeholder='last name' component={MyForm}/>
 					</div>
 					<div
@@ -59,15 +60,16 @@ export const TestForm: React.FC<Props> = ({ onSubmit }) => {
 							justifyContent: 'space-evenly',
 							minWidth: '100%',
 							margin: 'auto',
-							padding: 6
+							padding: 6,
+							borderBottom: '1px solid grey'
 						}}
 					>
 						<Button>click</Button>
-						<p style={{display: 'block', width: '16rem'}}>hello, is there anybody in there?</p>
+						<p style={{display: 'block', width: '16rem'}}><Typography>hello, is there anybody in there?</Typography></p>
 						<Field name='email' placeholder='email' component={MyForm}/>
 					</div>
 					<Button type='submit'>submit</Button>
-					<pre>{JSON.stringify(values, null, 2)}</pre>
+					
 				</Form>
 			)}
 		</Formik>
