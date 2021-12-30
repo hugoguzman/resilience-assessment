@@ -1,7 +1,8 @@
 import { Button, TextField } from '@mui/material';
 import * as React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { MyForm } from './MyForm';
+import { MyForm } from './myForm';
+import { Padding } from '@mui/icons-material';
 
 interface Values {
 	firstName: string;
@@ -29,10 +30,12 @@ export const TestForm: React.FC<Props> = ({ onSubmit }) => {
 							flex: 1,
 							justifyContent: 'space-evenly',
 							minWidth: '100%',
+							margin: 'auto',
+							padding: 6
 						}}
 					>
 						<Button>click</Button>
-						<p>hello, is there anybody in there?</p>
+						<p style={{display: 'block', width: '16rem'}}>hello, is there anybody in there?</p>
 						<Field name='firstName' placeholder='first name' component={MyForm} />
 					</div>
 					<div
@@ -41,10 +44,12 @@ export const TestForm: React.FC<Props> = ({ onSubmit }) => {
 							flex: 1,
 							justifyContent: 'space-evenly',
 							minWidth: '100%',
+							margin: 'auto',
+							padding: 6
 						}}
 					>
 						<Button>click</Button>
-						<p>hello, is there anybody in there?</p>
+						<p style={{display: 'block', width: '16rem'}}>hello, is there anybody in there? hello, is there anybody in there?</p>
 						<Field name='lastName' placeholder='last name' component={MyForm}/>
 					</div>
 					<div
@@ -53,10 +58,12 @@ export const TestForm: React.FC<Props> = ({ onSubmit }) => {
 							flex: 1,
 							justifyContent: 'space-evenly',
 							minWidth: '100%',
+							margin: 'auto',
+							padding: 6
 						}}
 					>
 						<Button>click</Button>
-						<p>hello, is there anybody in there?</p>
+						<p style={{display: 'block', width: '16rem'}}>hello, is there anybody in there?</p>
 						<Field name='email' placeholder='email' component={MyForm}/>
 					</div>
 					<Button type='submit'>submit</Button>
