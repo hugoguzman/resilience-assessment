@@ -37,13 +37,14 @@ export const ParameterCard: React.FC<Props> = ({ onSubmit }) => {
 		>
 			{({ values, handleChange, handleBlur }) => (
 				<Form>
-					<Card elevation={0}>
-						<span style={{ paddingTop: 0 }}>
+					<Card elevation={0} sx={{alignItems: 'center'}}>
+						{/* <span style={{ paddingTop: 0 }}>
 							<Typography sx={{ fontWeight: 'bold' }}>
 								1A. Section Title
 							</Typography>
-						</span>
+						</span> */}
 						<CardHeader
+						
 							avatar={
 								<IconButton onClick={() => console.log('open help modal')}>
 									<HelpIcon />
@@ -102,7 +103,6 @@ export const ParameterCard: React.FC<Props> = ({ onSubmit }) => {
 							}
 							title='PARAMETERS'
 						/>
-						<Button type='submit'>Submit</Button>
 					</Card>
 				</Form>
 			)}

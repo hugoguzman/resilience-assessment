@@ -6,9 +6,9 @@ import HelpIcon from '@mui/icons-material/Help';
 export const ConstantsCard = () => {
     return (
 			<Card elevation={0}>
-				<span style={{ paddingTop: 10}}>
+				{/* <span style={{ paddingTop: 10}}>
 					<Typography sx={{fontWeight: 'bold'}}>1A. Section Title</Typography>
-				</span>
+				</span> */}
 				<CardHeader
 					sx={{display: 'flex'}}
 					avatar={

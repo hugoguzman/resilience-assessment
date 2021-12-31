@@ -5,8 +5,11 @@ import LayoutCards from './LayoutCards';
 
 export const LayoutGrid = () => {
 	return (
-		<Container maxWidth='sm'>
-			<Grid container spacing={3} direction={'column'} sx={{ paddingTop: 6, paddingBottom: 6}}>
+		<Container
+		//  maxWidth='sm'
+		sx={{display: 'flex', flexDirection: 'column'}}
+		 >
+			<Grid container spacing={3} direction={'column'} sx={{ paddingTop: 6, paddingBottom: 6, display: 'flex', flex: 1}}>
 				<Grid item xs={12} sm={6} md={3}>
 					<Typography variant='h6' sx={{ textAlign: 'center', fontWeight: 'bold'}}>Input</Typography> 
 					<Typography variant='subtitle1' sx={{fontWeight: 'bold'}}>
@@ -15,7 +18,8 @@ export const LayoutGrid = () => {
 						shelter, waste)
 					</Typography>
 				</Grid>
-				<Grid item xs={12} sm={6} md={3}>
+				<Grid item xs={12} sm={6} md={3} >
+					<p><Typography>1A. Section Title</Typography></p>
 					<LayoutCards />
 				</Grid>
 				<Grid item xs={12} sm={6} md={3}>

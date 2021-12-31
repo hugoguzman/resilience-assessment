@@ -1,7 +1,10 @@
-import { Button, TextField, Typography } from '@mui/material';
+import { Button, TextField, Typography, IconButton } from '@mui/material';
 import * as React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { MyForm } from './myForm';
+import HelpIcon from '@mui/icons-material/Help';
+import { MyTextField } from './MyTextField'
+
 
 interface Values {
 	firstName: string;
@@ -23,6 +26,9 @@ export const TestForm: React.FC<Props> = ({ onSubmit }) => {
 		>
 			{({ values, handleChange, handleBlur }) => (
 				<Form style={{ minWidth: '100%' }}>
+				{/* <div
+				style={{width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'space-evenly', flex: 1}}
+				> */}
 					<div
 						style={{
 							display: 'flex',
@@ -34,9 +40,13 @@ export const TestForm: React.FC<Props> = ({ onSubmit }) => {
 							borderBottom: '1px solid grey'
 						}}
 					>
-						<Button>click</Button>
-						<p style={{display: 'block', width: '16rem'}}><Typography>hello, is there anybody in there?</Typography></p>
-						<Field name='firstName' placeholder='first name' component={MyForm} />
+						<IconButton onClick={() => console.log('open help modal')}>
+							<HelpIcon />
+						</IconButton>
+						
+						<p style={{display: 'block', width: '16rem'}}><Typography>First Name</Typography></p>
+						
+						{/* <Field name='firstName' placeholder='first name' component={MyForm} /> */}
 					</div>
 					<div
 						style={{
@@ -49,9 +59,9 @@ export const TestForm: React.FC<Props> = ({ onSubmit }) => {
 							borderBottom: '1px solid grey'
 						}}
 					>
-						<Button>click</Button>
-						<p style={{display: 'block', width: '16rem'}}><Typography>hello, is there anybody in there?</Typography></p>
-						<Field name='lastName' placeholder='last name' component={MyForm}/>
+						
+						<p style={{display: 'block', width: '16rem'}}><Typography>Last Name</Typography></p>
+						{/* <Field name='lastName' placeholder='last name' component={MyForm}/> */}
 					</div>
 					<div
 						style={{
@@ -64,14 +74,14 @@ export const TestForm: React.FC<Props> = ({ onSubmit }) => {
 							borderBottom: '1px solid grey'
 						}}
 					>
-						<Button>click</Button>
-						<p style={{display: 'block', width: '16rem'}}><Typography>hello, is there anybody in there?</Typography></p>
-						<Field name='email' placeholder='email' component={MyForm}/>
+						<p style={{display: 'block', width: '16rem'}}><Typography>Email Address</Typography></p>
+						{/* <Field name='email' placeholder='email' component={MyForm}/> */}
 					</div>
-					<Button type='submit'>submit</Button>
+					{/* <Button sx={{margin: 3}}  variant='outlined' type='submit'>submit</Button> */}
 					
-				</Form>
-			)}
+				 </Form>
+			 )}
 		</Formik>
+		
 	);
 };

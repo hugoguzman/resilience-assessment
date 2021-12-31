@@ -1,0 +1,8 @@
+.HealthHead {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: auto;
+    padding: 6vw;
+    background-color: gainsboro;
+}
