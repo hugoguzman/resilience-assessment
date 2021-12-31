@@ -1,13 +1,14 @@
-import React from 'react';
-import { LayoutGrid } from '../Components/LayoutGrid';
-import { Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import '../Components/HealthWB.css';
+import LayoutCards from '../Components/LayoutCards'
 
 export default function HealthandWellbeing() {
 	return (
 		<>
 			<header className='HealthHead'>
-				<Typography variant='h6' sx={{ fontWeight: 'bold'}}>Health and Wellbeing</Typography>{' '}
+				<Typography variant='h6' sx={{ fontWeight: 'bold' }}>
+					Health and Wellbeing
+				</Typography>{' '}
 				<Typography variant='body1'>
 					{' '}
 					This dimension relates to people - the health and well-being of
@@ -20,7 +21,46 @@ export default function HealthandWellbeing() {
 					population through its normal and emergency healthcare provisions.
 				</Typography>
 			</header>
-			<LayoutGrid />
+			<Container
+				//  maxWidth='sm'
+				sx={{ display: 'flex', flexDirection: 'column' }}
+			>
+				<Grid
+					container
+					spacing={3}
+					direction={'column'}
+					sx={{ paddingTop: 6, paddingBottom: 6, display: 'flex', flex: 1 }}
+				>
+					<Grid item xs={12} sm={6} md={3}>
+						<Typography
+							variant='h6'
+							sx={{ textAlign: 'center', fontWeight: 'bold' }}
+						>
+							Input
+						</Typography>
+						<Typography variant='subtitle1' sx={{ fontWeight: 'bold' }}>
+							Question 1: How are essential resources for a person's basic
+							physiological needs provided or accessible? (energy, water, food,
+							shelter, waste)
+						</Typography>
+					</Grid>
+					<Grid item xs={12} sm={6} md={3}>
+						<p>
+							<Typography>1A. Section Title</Typography>
+						</p>
+						<LayoutCards />
+					</Grid>
+					<Grid item xs={12} sm={6} md={3}>
+						{/* <LayoutCards /> */}
+					</Grid>
+					<Grid item xs={12} sm={6} md={3}>
+						{/* <LayoutCards /> */}
+					</Grid>
+					<Grid item xs={12} sm={6} md={3}>
+						{/* <LayoutCards /> */}
+					</Grid>
+				</Grid>
+			</Container>
 		</>
 	);
 }
