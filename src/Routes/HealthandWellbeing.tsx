@@ -1,6 +1,8 @@
-import { Container, Grid, Typography } from '@mui/material';
+import { Button, Container, Grid, Typography } from '@mui/material';
 import '../Components/HealthWB.css';
 import LayoutCards from '../Components/LayoutCards'
+import { FormControl } from '@mui/material';
+
 
 export default function HealthandWellbeing() {
 	return (
@@ -22,9 +24,9 @@ export default function HealthandWellbeing() {
 				</Typography>
 			</header>
 			<Container
-				//  maxWidth='sm'
 				sx={{ display: 'flex', flexDirection: 'column' }}
 			>
+			<FormControl>
 				<Grid
 					container
 					spacing={3}
@@ -57,9 +59,10 @@ export default function HealthandWellbeing() {
 						{/* <LayoutCards /> */}
 					</Grid>
 					<Grid item xs={12} sm={6} md={3}>
-						{/* <LayoutCards /> */}
+						<button type='submit'>Submit</button>
 					</Grid>
 				</Grid>
+				</FormControl>
 			</Container>
 		</>
 	);
