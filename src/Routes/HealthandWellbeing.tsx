@@ -36,12 +36,12 @@ export default function HealthandWellbeing() {
 				>
 					<Grid item xs={12} sm={6} md={3}>
 						<Typography
-							variant='h6'
+							variant='subtitle1'
 							sx={{ textAlign: 'center', fontWeight: 'bold' }}
 						>
 							Input
 						</Typography>
-						<Typography variant='subtitle1' sx={{ fontWeight: 'bold' }}>
+						<Typography variant='body1'>
 							Question 1: How are essential resources for a person's basic
 							physiological needs provided or accessible? (energy, water, food,
 							shelter, waste)
@@ -49,7 +49,7 @@ export default function HealthandWellbeing() {
 					</Grid>
 					<Grid item xs={12} sm={6} md={3}>
 						<p>
-							<Typography>1A. Section Title</Typography>
+							<Typography variant='subtitle1' sx={{fontWeight: 'bold'}}>1A. Section Title</Typography>
 						</p>
 						{/* <LayoutCards /> */}
 						<FormTab />
