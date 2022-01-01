@@ -2,6 +2,7 @@ import { Button, Container, Grid, Typography } from '@mui/material';
 import '../Components/HealthWB.css';
 import LayoutCards from '../Components/LayoutCards'
 import { FormControl } from '@mui/material';
+import { FormTab } from '../Components/FormTab';
 
 
 export default function HealthandWellbeing() {
@@ -50,7 +51,8 @@ export default function HealthandWellbeing() {
 						<p>
 							<Typography>1A. Section Title</Typography>
 						</p>
-						<LayoutCards />
+						{/* <LayoutCards /> */}
+						<FormTab />
 					</Grid>
 					<Grid item xs={12} sm={6} md={3}>
 						{/* <LayoutCards /> */}
