@@ -32,10 +32,11 @@ export const FormTab = () => {
 		shouldUnregister: false,
 	});
 
-    console.log('errors', errors);
+    // console.log('errors', errors);
 
     const formSubmitHandler: SubmitHandler<FormValues> = (data: FormValues) => {
         console.log('form data is', data);
+        alert(JSON.stringify(data, null, 2)); 
     };
 
 	console.log(`form isDirty=${formState.isDirty}`);
@@ -48,14 +49,14 @@ export const FormTab = () => {
 		<div>
 			<form onSubmit={handleSubmit(formSubmitHandler)}>
 				{/* <DevTool control={control} /> */}
-				<Tabs value={selectedTab} onChange={handleTabChange}>
+				<Tabs sx={{ borderBottom: 1, borderColor: 'divider' }} value={selectedTab} onChange={handleTabChange}>
 					<Tab label='Name' />
 					<Tab label='Identifier' />
 					<Tab label='A third Tab' />
 				</Tabs>
 				{selectedTab === 0 && (
 					<>
-                    <div style={{ display: 'flex', alignItems: 'center', flex: 1, padding: 16, justifyContent: 'space-evenly'}}>
+                    <div style={{ display: 'flex', alignItems: 'center', flex: 1, padding: 16, justifyContent: 'space-evenly' }}>
                         <IconButton><HelpIcon></HelpIcon></IconButton>
                         <p style={{display: 'block', width: '100%'}}>this is where the input prompt or question will go.</p>
 						<TextField
@@ -68,7 +69,9 @@ export const FormTab = () => {
 						/>
                         {errors.firstName && <span>This field is required</span>}
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', flex: 1, padding: 16}}>
+                        <div style={{ display: 'flex', alignItems: 'center', flex: 1, padding: 16, justifyContent: 'space-evenly'}}>
+                        <IconButton><HelpIcon></HelpIcon></IconButton>
+                        <p style={{display: 'block', width: '100%'}}>this is where the input prompt or question will go.</p>
 						<TextField
 							id='lastName'
 							//   name="lastName"
@@ -78,8 +81,8 @@ export const FormTab = () => {
 							//   inputRef={register()}
 						/>
                         {errors.lastName && <span>This field is required</span>}
-                        <input type='submit'/>
                         </div>
+                        <input type='submit'/>
 					</>
 				)}
 				{selectedTab === 1 && (
