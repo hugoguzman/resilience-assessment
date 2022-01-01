@@ -1,9 +1,6 @@
-import { Button, Container, Grid, Typography } from '@mui/material';
-import '../Components/HealthWB.css';
-import LayoutCards from '../Components/LayoutCards'
-import { FormControl } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import { FormTab } from '../Components/FormTab';
-
+import '../Components/HealthWB.css';
 
 export default function HealthandWellbeing() {
 	return (
@@ -24,10 +21,8 @@ export default function HealthandWellbeing() {
 					population through its normal and emergency healthcare provisions.
 				</Typography>
 			</header>
-			<Container
-				sx={{ display: 'flex', flexDirection: 'column' }}
-			>
-			<FormControl>
+			<Container sx={{ display: 'flex', flexDirection: 'column' }}>
+				{/* <FormControl> */}
 				<Grid
 					container
 					spacing={3}
@@ -49,22 +44,18 @@ export default function HealthandWellbeing() {
 					</Grid>
 					<Grid item xs={12} sm={6} md={3}>
 						<p>
-							<Typography variant='subtitle1' sx={{fontWeight: 'bold'}}>1A. Section Title</Typography>
+							<Typography variant='subtitle1' sx={{ fontWeight: 'bold' }}>
+								1A. Section Title
+							</Typography>
 						</p>
-						{/* <LayoutCards /> */}
+
 						<FormTab />
 					</Grid>
-					<Grid item xs={12} sm={6} md={3}>
-						{/* <LayoutCards /> */}
-					</Grid>
-					<Grid item xs={12} sm={6} md={3}>
-						{/* <LayoutCards /> */}
-					</Grid>
-					<Grid item xs={12} sm={6} md={3}>
-						{/* <button type='submit'>Submit</button> */}
-					</Grid>
+					<Grid item xs={12} sm={6} md={3}></Grid>
+					<Grid item xs={12} sm={6} md={3}></Grid>
+					<Grid item xs={12} sm={6} md={3}></Grid>
 				</Grid>
-				</FormControl>
+				{/* </FormControl> */}
 			</Container>
 		</>
 	);

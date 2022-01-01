@@ -1,30 +1,22 @@
-import Box from '@mui/material/Box';
+import { yupResolver } from '@hookform/resolvers/yup';
+import HelpIcon from '@mui/icons-material/Help';
+import { IconButton, TextField, Typography } from '@mui/material';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import * as React from 'react';
-import { ConstantsCard } from './ConstantsCard';
-import { ParameterCard } from './ParameterCard';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-// import { DevTool } from "@hookform/devtools";
-import { InputProps, TextField, Button, IconButton, Typography } from '@mui/material';
-import HelpIcon from '@mui/icons-material/Help';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 type FormValues = {
 	name: string;
 	firstName: string;
 	lastName: string;
-	// useFormRegisterReturn: any;
-	// register: (values: any) => void;
-	// inputRef?: React.Ref<any>;
-	// register: React.Ref<any>;
 };
 
 const schema = yup.object().shape({
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
-  });
+	firstName: yup.string().required(),
+	lastName: yup.string().required(),
+});
 
 export const FormTab = () => {
 	const [selectedTab, setSelectedTab] = React.useState(0);
@@ -35,12 +27,12 @@ export const FormTab = () => {
 
 	const {
 		register,
-		control,
-		formState,
+        formState,
+		control,	
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormValues>({
-        resolver: yupResolver(schema),
+		resolver: yupResolver(schema),
 		mode: 'onBlur',
 		reValidateMode: 'onChange',
 		shouldUnregister: false,
@@ -59,7 +51,6 @@ export const FormTab = () => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit(formSubmitHandler)}>
-				{/* <DevTool control={control} /> */}
 				<Tabs
 					sx={{ borderBottom: 1, borderColor: 'divider' }}
 					value={selectedTab}
@@ -83,10 +74,13 @@ export const FormTab = () => {
 							<IconButton>
 								<HelpIcon></HelpIcon>
 							</IconButton>
-							<Typography sx={{display:'block', width: '100%'}}>This is where words go</Typography>
+							<Typography sx={{ display: 'block', width: '100%' }}>
+								This is where words go
+							</Typography>
 							<Controller
 								name='firstName'
 								control={control}
+                                defaultValue=''
 								render={({ field }) => (
 									<TextField
 										{...field}
@@ -99,16 +93,6 @@ export const FormTab = () => {
 									/>
 								)}
 							/>
-                            {/* {errors.firstName && <span>This field is required</span>} */}
-							{/* <TextField
-							id='firstName'
-							//   name="firstName"
-							label='First Name'
-							type='text'
-							{...register('firstName', { required: true })}
-							//   inputRef={...register('name', { required: true })}
-						/>
-                         */}
 						</div>
 						<div
 							style={{
@@ -122,34 +106,24 @@ export const FormTab = () => {
 							<IconButton>
 								<HelpIcon></HelpIcon>
 							</IconButton>
-							{/* <p style={{ display: 'block', width: '100%' }}>
-								this is where the input prompt or question will go.
-							</p> */}
-                            <Typography sx={{display:'block', width: '100%'}}>This is where words go</Typography>
-                            <Controller
+
+							<Typography sx={{ display: 'block', width: '100%' }}>
+								This is where words go
+							</Typography>
+							<Controller
 								name='lastName'
 								control={control}
+                                defaultValue=''
 								render={({ field }) => (
 									<TextField
 										{...field}
 										label='Last Name'
 										variant='outlined'
 										error={!!errors.lastName}
-										helperText={
-											errors.lastName ? errors.lastName?.message : ''
-										}
+										helperText={errors.lastName ? errors.lastName?.message : ''}
 									/>
 								)}
 							/>
-							{/* <TextField
-								id='lastName'
-								//   name="lastName"
-								label='Last Name'
-								type='text'
-								{...register('lastName', { required: true })}
-								//   inputRef={register()}
-							/> */}
-							{/* {errors.lastName && <span>This field is required</span>} */}
 						</div>
 						<input type='submit' />
 					</>
@@ -164,14 +138,13 @@ export const FormTab = () => {
 					/>
 				)}
 				{selectedTab === 2 && (
-					// <TextField
-					// 	id='someField'
-					// 	name='someField'
-					// 	label='some field'
-					// 	type='text'
-					// 	// inputRef={register()}
-					// />
-					<ConstantsCard />
+					<TextField
+						id='someField'
+						name='someField'
+						label='some field'
+						type='text'
+						// inputRef={register()}
+					/>
 				)}
 				{/* <Button>Submit</Button> */}
 			</form>
