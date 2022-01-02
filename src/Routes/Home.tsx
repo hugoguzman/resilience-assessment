@@ -43,8 +43,9 @@ const Home: React.FC = () => {
 				</Typography>{' '}
 				<Typography variant='h6'> Please Log in.</Typography>
 			</header>
-			<div style={{ display: 'flex', flex: 1 }}>
+			<div style={{ display: 'flex', flex: 1, alignItems: 'center', flexDirection: 'column', paddingTop: 8 }}>
 				<form onSubmit={handleSubmit(onSubmit)}>
+					<br />
 					<Controller
 						name='email'
 						control={control}
@@ -79,7 +80,12 @@ const Home: React.FC = () => {
 							/>
 						)}
 					/>
+					<br />
+					<br />
 					<input type='submit' />
+					
+					<br />
+					<br />
 				</form>
 			</div>
 		</>

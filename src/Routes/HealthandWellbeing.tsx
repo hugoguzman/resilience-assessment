@@ -9,7 +9,7 @@ export default function HealthandWellbeing() {
 				<Typography variant='h6' sx={{ fontWeight: 'bold' }}>
 					Health and Wellbeing
 				</Typography>{' '}
-				<Typography variant='body1'>
+				<Typography variant='body2'>
 					{' '}
 					This dimension relates to people - the health and well-being of
 					everyone living and working in the city. This dimension considers the
@@ -54,6 +54,7 @@ export default function HealthandWellbeing() {
 					<Grid item xs={12} sm={6} md={3}></Grid>
 					<Grid item xs={12} sm={6} md={3}></Grid>
 					<Grid item xs={12} sm={6} md={3}></Grid>
+				
 				</Grid>
 				{/* </FormControl> */}
 			</Container>
