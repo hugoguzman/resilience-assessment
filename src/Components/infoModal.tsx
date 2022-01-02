@@ -4,6 +4,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
+type Props = {
+    open: boolean;
+    handleClose: () => void;
+    modalTitle: string;
+    modalBody: string;
+}
+
+
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -16,14 +24,12 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
+
+ const InfoModal: React.FC<Props> = ({open, handleClose, modalTitle, modalBody}) => {
+  
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -32,13 +38,15 @@ export default function BasicModal() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+           {modalTitle}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            {modalBody}
           </Typography>
         </Box>
       </Modal>
     </div>
   );
 }
+
+export default InfoModal;

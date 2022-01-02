@@ -1,13 +1,19 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import HelpIcon from '@mui/icons-material/Help';
-import { Container, Grid, IconButton, TextField, Typography } from '@mui/material';
+import {
+	Container,
+	Grid,
+	IconButton,
+	TextField,
+	Typography,
+} from '@mui/material';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import * as React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import '../Components/HealthWB.css';
-
+import InfoModal from '../Components/InfoModal';
 
 type FormValues = {
 	inputA: string; // later on, need to determine best type declaration for error validation etc.
@@ -24,8 +30,12 @@ const schema = yup.object().shape({
 });
 
 
-export default function HealthandWellbeing() {
-	
+  
+  
+ const HealthandWellbeing: React.FC = () => {
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 	const [selectedTab, setSelectedTab] = React.useState(0);
 
 	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -101,155 +111,159 @@ export default function HealthandWellbeing() {
 							</Typography>
 						</p>
 						<div>
-			<form onSubmit={handleSubmit(formSubmitHandler)}>
-				<Tabs
-					sx={{ borderBottom: 1, borderColor: 'divider' }}
-					value={selectedTab}
-					onChange={handleTabChange}
-				>
-					<Tab label='Input Parameters' />
-					<Tab label='Constants' />
-					{/* <Tab label='A third Tab' /> */}
-				</Tabs>
-				{selectedTab === 0 && (
-					<>
-						<div
-							style={{
-								display: 'flex',
-								alignItems: 'center',
-								flex: 1,
-								padding: 16,
-								justifyContent: 'space-evenly',
-							}}
-						>
-							<IconButton>
-								<HelpIcon></HelpIcon>
-							</IconButton>
-							<Typography sx={{ display: 'block', width: '100%' }}>
-								This is where words go
-							</Typography>
-							<Controller
-								name='inputA'
-								control={control}
-								defaultValue=''
-								render={({ field }) => (
-									<TextField
-										{...field}
-										label='Input'
-										variant='outlined'
-										error={!!errors.inputA}
-										helperText={
-											errors.inputA ? errors.inputA?.message : ''
-										}
-									/>
-								)}
-							/>
-						</div>
-						<div
-							style={{
-								display: 'flex',
-								alignItems: 'center',
-								flex: 1,
-								padding: 16,
-								justifyContent: 'space-evenly',
-							}}
-						>
-							<IconButton>
-								<HelpIcon></HelpIcon>
-							</IconButton>
+							<form onSubmit={handleSubmit(formSubmitHandler)}>
+								<Tabs
+									sx={{ borderBottom: 1, borderColor: 'divider' }}
+									value={selectedTab}
+									onChange={handleTabChange}
+								>
+									<Tab label='Input Parameters' />
+									<Tab label='Constants' />
+									{/* <Tab label='A third Tab' /> */}
+								</Tabs>
+								{selectedTab === 0 && (
+									<>
+										<div
+											style={{
+												display: 'flex',
+												alignItems: 'center',
+												flex: 1,
+												padding: 16,
+												justifyContent: 'space-evenly',
+											}}
+										>
+											<IconButton onClick={handleOpen}>
+												<HelpIcon></HelpIcon>
+											</IconButton>
+											<Typography sx={{ display: 'block', width: '100%' }}>
+												This is where words go
+											</Typography>
+											<Controller
+												name='inputA'
+												control={control}
+												defaultValue=''
+												render={({ field }) => (
+													<TextField
+														{...field}
+														label='Input'
+														variant='outlined'
+														error={!!errors.inputA}
+														helperText={
+															errors.inputA ? errors.inputA?.message : ''
+														}
+													/>
+												)}
+											/>
+										</div>
+										<div
+											style={{
+												display: 'flex',
+												alignItems: 'center',
+												flex: 1,
+												padding: 16,
+												justifyContent: 'space-evenly',
+											}}
+										>
+											<IconButton>
+												<HelpIcon></HelpIcon>
+											</IconButton>
 
-							<Typography sx={{ display: 'block', width: '100%' }}>
-								This is where words go
-							</Typography>
-							<Controller
-								name='inputB'
-								control={control}
-								defaultValue=''
-								render={({ field }) => (
-									<TextField
-										{...field}
-										label='Input'
-										variant='outlined'
-										error={!!errors.inputB}
-										helperText={errors.inputB ? errors.inputB?.message : ''}
-									/>
+											<Typography sx={{ display: 'block', width: '100%' }}>
+												This is where words go
+											</Typography>
+											<Controller
+												name='inputB'
+												control={control}
+												defaultValue=''
+												render={({ field }) => (
+													<TextField
+														{...field}
+														label='Input'
+														variant='outlined'
+														error={!!errors.inputB}
+														helperText={
+															errors.inputB ? errors.inputB?.message : ''
+														}
+													/>
+												)}
+											/>
+										</div>
+										<input type='submit' />
+										<InfoModal open={open} handleClose={handleClose} modalTitle={'Modal 1A'} modalBody={'body text for the modal describing the input paramater or constant.'} />
+									</>
 								)}
-							/>
-						</div>
-						<input type='submit' />
-					</>
-				)}
-				{selectedTab === 1 && (
-					<>
-						<div
-							style={{
-								display: 'flex',
-								alignItems: 'center',
-								flex: 1,
-								padding: 16,
-								justifyContent: 'space-evenly',
-							}}
-						>
-							<IconButton>
-								<HelpIcon></HelpIcon>
-							</IconButton>
-							<Typography sx={{ display: 'block', width: '100%' }}>
-								This is where words go
-							</Typography>
-							<Controller
-								name='constantA'
-								control={control}
-								defaultValue={''}
-								render={({ field }) => (
-									<TextField
-										{...field}
-										label='Constant'
-										variant='outlined'
-										error={!!errors.constantA}
-										helperText={
-											errors.constantA ? errors.constantA?.message : ''
-										}
-									/>
-								)}
-							/>
-						</div>
-						<div
-							style={{
-								display: 'flex',
-								alignItems: 'center',
-								flex: 1,
-								padding: 16,
-								justifyContent: 'space-evenly',
-							}}
-						>
-							<IconButton>
-								<HelpIcon></HelpIcon>
-							</IconButton>
+								{selectedTab === 1 && (
+									<>
+										<div
+											style={{
+												display: 'flex',
+												alignItems: 'center',
+												flex: 1,
+												padding: 16,
+												justifyContent: 'space-evenly',
+											}}
+										>
+											<IconButton>
+												<HelpIcon></HelpIcon>
+											</IconButton>
+											<Typography sx={{ display: 'block', width: '100%' }}>
+												This is where words go
+											</Typography>
+											<Controller
+												name='constantA'
+												control={control}
+												defaultValue={''}
+												render={({ field }) => (
+													<TextField
+														{...field}
+														label='Constant'
+														variant='outlined'
+														error={!!errors.constantA}
+														helperText={
+															errors.constantA ? errors.constantA?.message : ''
+														}
+													/>
+												)}
+											/>
+										</div>
+										<div
+											style={{
+												display: 'flex',
+												alignItems: 'center',
+												flex: 1,
+												padding: 16,
+												justifyContent: 'space-evenly',
+											}}
+										>
+											<IconButton>
+												<HelpIcon></HelpIcon>
+											</IconButton>
 
-							<Typography sx={{ display: 'block', width: '100%' }}>
-								This is where words go
-							</Typography>
-							<Controller
-								name='constantB'
-								control={control}
-								defaultValue={''}
-								render={({ field }) => (
-									<TextField
-										{...field}
-										label='Constant'
-										variant='outlined'
-										error={!!errors.constantB}
-										helperText={
-											errors.constantB ? errors.constantB?.message : ''
-										}
-									/>
+											<Typography sx={{ display: 'block', width: '100%' }}>
+												This is where words go
+											</Typography>
+											<Controller
+												name='constantB'
+												control={control}
+												defaultValue={''}
+												render={({ field }) => (
+													<TextField
+														{...field}
+														label='Constant'
+														variant='outlined'
+														error={!!errors.constantB}
+														helperText={
+															errors.constantB ? errors.constantB?.message : ''
+														}
+													/>
+												)}
+											/>
+										</div>
+										<input type='submit' />
+										
+									</>
 								)}
-							/>
-						</div>
-						<input type='submit' />
-					</>
-				)}
-				{/* {selectedTab === 2 && (
+								{/* {selectedTab === 2 && (
 					<TextField
 						id='someField'
 						name='someField'
@@ -258,18 +272,20 @@ export default function HealthandWellbeing() {
 						// inputRef={register()}
 					/>
 				)} */}
-				{/* <Button>Submit</Button> */}
-			</form>
-		</div>			
+								{/* <Button>Submit</Button> */}
+							</form>
+						</div>
 						{/* <FormTab /> */}
 					</Grid>
 					<Grid item xs={12} sm={6} md={3}></Grid>
 					<Grid item xs={12} sm={6} md={3}></Grid>
 					<Grid item xs={12} sm={6} md={3}></Grid>
-				
 				</Grid>
 				{/* </FormControl> */}
 			</Container>
 		</>
 	);
 }
+
+
+export default HealthandWellbeing;
