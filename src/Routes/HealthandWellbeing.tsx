@@ -10,15 +10,15 @@ import '../Components/HealthWB.css';
 
 
 type FormValues = {
-	firstName: string;
-	lastName: string;
+	inputA: string; // later on, need to determine best type declaration for error validation etc.
+	inputB: string;
 	constantA: number | string;
 	constantB: number | string;
 };
 
 const schema = yup.object().shape({
-	firstName: yup.string().required(),
-	lastName: yup.string().required(),
+	inputA: yup.string().required(),
+	inputB: yup.string().required(),
 	constantA: yup.number().required().positive().integer(),
 	constantB: yup.number().required().positive().integer(),
 });
@@ -128,17 +128,17 @@ export default function HealthandWellbeing() {
 								This is where words go
 							</Typography>
 							<Controller
-								name='firstName'
+								name='inputA'
 								control={control}
 								defaultValue=''
 								render={({ field }) => (
 									<TextField
 										{...field}
-										label='First Name'
+										label='Input'
 										variant='outlined'
-										error={!!errors.firstName}
+										error={!!errors.inputA}
 										helperText={
-											errors.firstName ? errors.firstName?.message : ''
+											errors.inputA ? errors.inputA?.message : ''
 										}
 									/>
 								)}
@@ -161,16 +161,16 @@ export default function HealthandWellbeing() {
 								This is where words go
 							</Typography>
 							<Controller
-								name='lastName'
+								name='inputB'
 								control={control}
 								defaultValue=''
 								render={({ field }) => (
 									<TextField
 										{...field}
-										label='Last Name'
+										label='Input'
 										variant='outlined'
-										error={!!errors.lastName}
-										helperText={errors.lastName ? errors.lastName?.message : ''}
+										error={!!errors.inputB}
+										helperText={errors.inputB ? errors.inputB?.message : ''}
 									/>
 								)}
 							/>
