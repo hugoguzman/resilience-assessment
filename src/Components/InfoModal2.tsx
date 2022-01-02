@@ -5,8 +5,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 type Props = {
-    open: boolean;
-    handleClose: () => void;
+    open1: boolean;
+    handleClose1: () => void;
     modalTitle: string;
     modalBody: string;
 }
@@ -26,13 +26,13 @@ const style = {
 
 
 
- const InfoModal: React.FC<Props> = ({open, handleClose, modalTitle, modalBody}) => {
+ const InfoModal: React.FC<Props> = ({open1, handleClose1, modalTitle, modalBody}) => {
   
   return (
     <div>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={open1}
+        onClose={handleClose1}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

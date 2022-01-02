@@ -14,6 +14,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import '../Components/HealthWB.css';
 import InfoModal from '../Components/InfoModal';
+import InfoModal2 from '../Components/InfoModal2'
 
 type FormValues = {
 	inputA: string; // later on, need to determine best type declaration for error validation etc.
@@ -36,7 +37,11 @@ const schema = yup.object().shape({
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+	const [open1, setOpen1] = React.useState(false);
+	const handleOpen1 = () => setOpen1(true);
+	const handleClose1 = () => setOpen1(false);
 	const [selectedTab, setSelectedTab] = React.useState(0);
+	
 
 	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
 		setSelectedTab(newValue);
@@ -164,7 +169,7 @@ const schema = yup.object().shape({
 												justifyContent: 'space-evenly',
 											}}
 										>
-											<IconButton>
+											<IconButton onClick={handleOpen1}>
 												<HelpIcon></HelpIcon>
 											</IconButton>
 
@@ -190,6 +195,8 @@ const schema = yup.object().shape({
 										</div>
 										<input type='submit' />
 										<InfoModal open={open} handleClose={handleClose} modalTitle={'Modal 1A'} modalBody={'body text for the modal describing the input paramater or constant.'} />
+										<InfoModal2 open1={open1} handleClose1={handleClose1} modalTitle={'Modal 1B'} modalBody={'body text for the modal describing the input paramater or constant.'} />
+
 									</>
 								)}
 								{selectedTab === 1 && (

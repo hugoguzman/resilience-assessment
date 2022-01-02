@@ -1,20 +1,10 @@
-
 import '../App.css';
 
 
 export default function EconomyandSociety() {
-  
-	return (
-
-		<>
-		empty
-		</>
-
-
-
-
-
-
-
-	);
+    return (
+        <>
+          <h1>Economy and Society</h1>
+        </>
+      );
 }
