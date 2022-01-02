@@ -12,9 +12,8 @@ import Tabs from '@mui/material/Tabs';
 import * as React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { CustomModal } from '../Components/CustomModal';
 import '../Components/HealthWB.css';
-import InfoModal from '../Components/InfoModal';
-import InfoModal2 from '../Components/InfoModal2'
 
 type FormValues = {
 	inputA: string; // later on, need to determine best type declaration for error validation etc.
@@ -30,18 +29,38 @@ const schema = yup.object().shape({
 	constantB: yup.number().required().positive().integer(),
 });
 
+const BLOCK = 'BLOCK';
+const SEE_AVAILABILITY = 'SEE_AVAILABILITY';
+const CLOSE = 'CLOSE';
 
-  
-  
- const HealthandWellbeing: React.FC = () => {
-	const [open, setOpen] = React.useState(false);
-	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
-	const [open1, setOpen1] = React.useState(false);
-	const handleOpen1 = () => setOpen1(true);
-	const handleClose1 = () => setOpen1(false);
+const modalReducer = (state: any, action: any) => {
+	switch (action.type) {
+		case BLOCK:
+			return {
+				heading: `Block User .`,
+				content: `Are you sure you want to block user ?`,
+
+				show: true,
+			};
+		case SEE_AVAILABILITY:
+			return {
+				heading: `See  Availability`,
+				content: `Below is 's availability. Select a time and date that works for you.`,
+
+				show: true,
+			};
+		case CLOSE:
+			return {
+				heading: '',
+				content: '',
+
+				show: false,
+			};
+	}
+};
+
+const HealthandWellbeing: React.FC = () => {
 	const [selectedTab, setSelectedTab] = React.useState(0);
-	
 
 	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
 		setSelectedTab(newValue);
@@ -70,6 +89,24 @@ const schema = yup.object().shape({
 	console.log(`form isDirty=${formState.isDirty}`);
 	console.log(formState.dirtyFields);
 
+	const [modalState, modalDispatch] = React.useReducer(modalReducer, {
+		heading: '',
+		content: '',
+		show: false,
+	});
+
+	const dispatchModalAction = (action: string) => {
+		modalDispatch({
+			type: action,
+		});
+	};
+
+	const closeModalHandler = () => {
+		modalDispatch({
+			type: CLOSE,
+		});
+	};
+
 	return (
 		<>
 			<header className='HealthHead'>
@@ -89,7 +126,6 @@ const schema = yup.object().shape({
 				</Typography>
 			</header>
 			<Container sx={{ display: 'flex', flexDirection: 'column' }}>
-				{/* <FormControl> */}
 				<Grid
 					container
 					spacing={3}
@@ -124,7 +160,6 @@ const schema = yup.object().shape({
 								>
 									<Tab label='Input Parameters' />
 									<Tab label='Constants' />
-									{/* <Tab label='A third Tab' /> */}
 								</Tabs>
 								{selectedTab === 0 && (
 									<>
@@ -137,7 +172,9 @@ const schema = yup.object().shape({
 												justifyContent: 'space-evenly',
 											}}
 										>
-											<IconButton onClick={handleOpen}>
+											<IconButton
+												onClick={() => dispatchModalAction(SEE_AVAILABILITY)}
+											>
 												<HelpIcon></HelpIcon>
 											</IconButton>
 											<Typography sx={{ display: 'block', width: '100%' }}>
@@ -169,7 +206,7 @@ const schema = yup.object().shape({
 												justifyContent: 'space-evenly',
 											}}
 										>
-											<IconButton onClick={handleOpen1}>
+											<IconButton onClick={() => dispatchModalAction(BLOCK)}>
 												<HelpIcon></HelpIcon>
 											</IconButton>
 
@@ -194,9 +231,6 @@ const schema = yup.object().shape({
 											/>
 										</div>
 										<input type='submit' />
-										<InfoModal open={open} handleClose={handleClose} modalTitle={'Modal 1A'} modalBody={'body text for the modal describing the input paramater or constant.'} />
-										<InfoModal2 open1={open1} handleClose1={handleClose1} modalTitle={'Modal 1B'} modalBody={'body text for the modal describing the input paramater or constant.'} />
-
 									</>
 								)}
 								{selectedTab === 1 && (
@@ -267,32 +301,24 @@ const schema = yup.object().shape({
 											/>
 										</div>
 										<input type='submit' />
-										
 									</>
 								)}
-								{/* {selectedTab === 2 && (
-					<TextField
-						id='someField'
-						name='someField'
-						label='some field'
-						type='text'
-						// inputRef={register()}
-					/>
-				)} */}
-								{/* <Button>Submit</Button> */}
 							</form>
 						</div>
-						{/* <FormTab /> */}
 					</Grid>
 					<Grid item xs={12} sm={6} md={3}></Grid>
 					<Grid item xs={12} sm={6} md={3}></Grid>
 					<Grid item xs={12} sm={6} md={3}></Grid>
 				</Grid>
-				{/* </FormControl> */}
 			</Container>
+			<CustomModal
+				show={modalState?.show}
+				close={closeModalHandler}
+				heading={modalState?.heading}
+				body={modalState?.content}
+			></CustomModal>
 		</>
 	);
-}
-
+};
 
 export default HealthandWellbeing;

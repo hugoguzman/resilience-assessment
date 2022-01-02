@@ -9,10 +9,6 @@ import InfrastructureandEnvironment from './Routes/InfrastructureandEnvironment'
 import LeadershipandStrategy from './Routes/LeadershipandStrategy';
 
 
-const user = {
-  name: 'Test user',
-  username: '@testuser'
-}
 
 
 
@@ -23,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="health-and-wellbeing" element={<HealthandWellbeing />} />
-        <Route path="economy-and-society" element={<EconomyandSociety user={user} />} />
+        <Route path="economy-and-society" element={<EconomyandSociety />} />
         <Route path="infrastructure-and-environment" element={<InfrastructureandEnvironment />} />
         <Route path="leadership-and-strategy" element={<LeadershipandStrategy />} />
       </Routes>
