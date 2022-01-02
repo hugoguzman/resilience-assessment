@@ -1,9 +1,39 @@
-import React from 'react';
-
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Email } from '@mui/icons-material';
+import HelpIcon from '@mui/icons-material/Help';
+import { IconButton, TextField, Typography } from '@mui/material';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import * as React from 'react';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import * as yup from 'yup';
 import '../Components/Home.css';
-import { Typography } from '@mui/material';
 
-export default function HealthandWellbeing() {
+type FormValues = {
+	email: string;
+	password: string;
+};
+
+const schema = yup.object().shape({
+	email: yup.string().email(),
+	password: yup.string().min(4).max(20).required(),
+});
+
+const Home: React.FC = () => {
+	const {
+		register,
+		control,
+		handleSubmit,
+		watch,
+		formState: { errors },
+	} = useForm<FormValues>({
+		resolver: yupResolver(schema),
+	});
+	const onSubmit: SubmitHandler<FormValues> = (data) =>
+		console.log('data submitted:', data);
+
+	console.log(watch('email'));
+	console.log('errors are', errors);
 
 	return (
 		<>
@@ -14,8 +44,46 @@ export default function HealthandWellbeing() {
 				<Typography variant='h6'> Please Log in.</Typography>
 			</header>
 			<div style={{ display: 'flex', flex: 1 }}>
-				
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<Controller
+						name='email'
+						control={control}
+						defaultValue='example@fiu.edu'
+						render={({ field }) => (
+							<TextField
+								{...field}
+								label='Email'
+								variant='outlined'
+								error={!!errors.email}
+								helperText={errors.email ? errors.email?.message : ''}
+								fullWidth
+								margin='dense'
+							/>
+						)}
+					/>
+					<br />
+					<Controller
+						name='password'
+						control={control}
+						defaultValue=''
+						render={({ field }) => (
+							<TextField
+								{...field}
+								type='password'
+								label='Password'
+								variant='outlined'
+								error={!!errors.password}
+								helperText={errors.password ? errors.password?.message : ''}
+								fullWidth
+								margin='dense'
+							/>
+						)}
+					/>
+					<input type='submit' />
+				</form>
 			</div>
 		</>
 	);
-}
+};
+
+export default Home;
