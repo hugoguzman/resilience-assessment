@@ -20,24 +20,24 @@ const modalReducer = (state: any, action: any) => {
                   return { 
                     heading: `Block User ${action.user.username}.`,
                     content: `Are you sure you want to block user ${action.user.username}?`,
-                    confirmButtonText: 'Block',
-                    confirmButtonAction: () => console.log('User blocked'),
+                    // confirmButtonText: 'Block',
+                    // confirmButtonAction: () => console.log('User blocked'),
                     show: true
                   }
             case SEE_AVAILABILITY:
                   return { 
                     heading: `See ${action.user.username}'s Availability`,
                     content: `Below is ${action.user.username}'s availability. Select a time and date that works for you.`,
-                    confirmButtonText: 'Request Session',
-                    confirmButtonAction: () => console.log('Session(s) requested.'),
+                    // confirmButtonText: 'Request Session',
+                    // confirmButtonAction: () => console.log('Session(s) requested.'),
                     show: true
                   }
             case CLOSE:
                   return { 
                     heading: '',
                     content: '',
-                    confirmButtonText: '',
-                    confirmButtonAction: '',
+                    // confirmButtonText: '',
+                    // confirmButtonAction: '',
                     show: false
                   }
 
@@ -53,8 +53,8 @@ export const EconomyandSociety = (props: IUserProfile) => {
     const [modalState, modalDispatch] = useReducer(modalReducer, {
       heading: '',
       content: '',
-      confirmButtonText: '',
-      confirmButtonAction: '',
+      // confirmButtonText: '',
+      // confirmButtonAction: '',
       show: false
     })
 
@@ -86,16 +86,19 @@ export const EconomyandSociety = (props: IUserProfile) => {
                 showConfirmCallToAction={showConfirmCallToAction}
                 show={modalState?.show}
                 close={closeModalHandler}
-                confirmButtonText={modalState?.confirmButtonText}
-                confirmButtonAction={modalState?.confirmButtonAction}>
-                    <Modal.Header closeButton>
+                heading={modalState?.heading}
+                body={modalState?.content}
+                // confirmButtonText={modalState?.confirmButtonText}
+                // confirmButtonAction={modalState?.confirmButtonAction}>
+                >
+                    {/* <Modal.Header closeButton>
                         <Modal.Title>{modalState?.heading}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <>
                             <p>{modalState?.content}</p>
                         </>
-                    </Modal.Body>
+                    </Modal.Body> */}
              </CustomModal>
         </>
     );
