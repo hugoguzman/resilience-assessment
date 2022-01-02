@@ -20,7 +20,7 @@ export const CustomModal = React.forwardRef((props: any, ref) => {
 		top: '50%',
 		left: '50%',
 		transform: 'translate(-50%, -50%)',
-		width: 400,
+		width: '75%',
 		bgcolor: 'background.paper',
 		border: '2px solid #000',
 		boxShadow: 24,
@@ -34,9 +34,9 @@ export const CustomModal = React.forwardRef((props: any, ref) => {
 				<Typography id='modal-modal-title' variant='h6' component='h2'>
 					{props.heading}
 				</Typography>
-				{/* <Typography id='modal-modal-description' sx={{ mt: 2 }}>
+				<Typography id='modal-modal-description' sx={{ mt: 2 }}>
 					{props.content}
-				</Typography> */}
+				</Typography>
 			</Box>
 		</Modal>
 	);
