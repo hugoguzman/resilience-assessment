@@ -1,4 +1,9 @@
-import { Box, Modal, Typography } from '@mui/material';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import React, { useEffect, useState } from 'react';
 
 export const CustomModal = React.forwardRef((props: any, ref) => {
@@ -28,16 +33,18 @@ export const CustomModal = React.forwardRef((props: any, ref) => {
 	};
 
 	return (
-		<Modal onClose={handleClose} open={show}>
-			<Box sx={style}>
-				{/* {props.children} */}
-				<Typography id='modal-modal-title' variant='h6' component='h2'>
-					{props.heading}
-				</Typography>
-				<Typography id='modal-modal-description' sx={{ mt: 2 }}>
-					{props.content}
-				</Typography>
-			</Box>
-		</Modal>
+		<>
+			<Dialog open={show} onClose={handleClose}>
+				<DialogTitle>{props.heading}</DialogTitle>
+				<DialogContent>
+					<DialogContentText id='alert-dialog-description'>
+						{props.body}
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={handleClose}>Close</Button>
+				</DialogActions>
+			</Dialog>
+		</>
 	);
 });

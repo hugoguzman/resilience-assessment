@@ -29,23 +29,23 @@ const schema = yup.object().shape({
 	constantB: yup.number().required().positive().integer(),
 });
 
-const BLOCK = 'BLOCK';
-const SEE_AVAILABILITY = 'SEE_AVAILABILITY';
+const MODAL_A = 'MODAL_A';
+const MODAL_B = 'MODAL_B';
 const CLOSE = 'CLOSE';
 
 const modalReducer = (state: any, action: any) => {
 	switch (action.type) {
-		case BLOCK:
+		case MODAL_A:
 			return {
-				heading: `Block User .`,
-				content: `Are you sure you want to block user ?`,
+				heading: `Modal 1A`,
+				content: `Content for Modal 1A goes here.`,
 
 				show: true,
 			};
-		case SEE_AVAILABILITY:
+		case MODAL_B:
 			return {
-				heading: `See  Availability`,
-				content: `Below is 's availability. Select a time and date that works for you.`,
+				heading: `Modal 1B`,
+				content: `Content for Modal 1B goes here.`,
 
 				show: true,
 			};
@@ -172,9 +172,7 @@ const HealthandWellbeing: React.FC = () => {
 												justifyContent: 'space-evenly',
 											}}
 										>
-											<IconButton
-												onClick={() => dispatchModalAction(SEE_AVAILABILITY)}
-											>
+											<IconButton onClick={() => dispatchModalAction(MODAL_A)}>
 												<HelpIcon></HelpIcon>
 											</IconButton>
 											<Typography sx={{ display: 'block', width: '100%' }}>
@@ -206,7 +204,7 @@ const HealthandWellbeing: React.FC = () => {
 												justifyContent: 'space-evenly',
 											}}
 										>
-											<IconButton onClick={() => dispatchModalAction(BLOCK)}>
+											<IconButton onClick={() => dispatchModalAction(MODAL_B)}>
 												<HelpIcon></HelpIcon>
 											</IconButton>
 
