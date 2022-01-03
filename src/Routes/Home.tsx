@@ -78,7 +78,7 @@ const Home: React.FC = () => {
 					/>
 					<br />
 					<br />
-					<Button type='submit' variant='outlined'>Login</Button>
+					<Button type='submit' variant='contained'>Login</Button>
 					
 					<br />
 					<br />

@@ -17,7 +17,7 @@ import { CustomModal } from '../Components/CustomModal';
 import '../Components/HealthWB.css';
 
 type FormValues = {
-	inputA: string; // later on, need to determine best type declaration for error validation etc.
+	inputA: string; // later on, need to determine best type definitions for error validation etc.
 	inputB: string;
 	constantA: number | string;
 	constantB: number | string;
@@ -81,6 +81,7 @@ const HealthandWellbeing: React.FC = () => {
 	});
 
 	console.log('errors', errors);
+	
 
 	const formSubmitHandler: SubmitHandler<FormValues> = (data: FormValues) => {
 		console.log('form data is', data);
@@ -126,7 +127,7 @@ const HealthandWellbeing: React.FC = () => {
 					population through its normal and emergency healthcare provisions.
 				</Typography>
 			</header>
-			<Container sx={{ display: 'flex', flexDirection: 'column' }}>
+			<Container sx={{ display: 'flex', flexDirection: 'column'}}>
 				<Grid
 					container
 					spacing={3}
@@ -177,7 +178,7 @@ const HealthandWellbeing: React.FC = () => {
 												<HelpIcon></HelpIcon>
 											</IconButton>
 											<Typography sx={{ display: 'block', width: '100%' }}>
-												This is where words go
+												Area of rainfall collection structures (ft<sup>2</sup>)
 											</Typography>
 											<Controller
 												name='inputA'
@@ -210,7 +211,7 @@ const HealthandWellbeing: React.FC = () => {
 											</IconButton>
 
 											<Typography sx={{ display: 'block', width: '100%' }}>
-												This is where words go
+												Actual rainfall (ft)
 											</Typography>
 											<Controller
 												name='inputB'
@@ -230,7 +231,7 @@ const HealthandWellbeing: React.FC = () => {
 											/>
 										</div>
 										{/* <input type='submit' /> */}
-										<Button type='submit' variant='outlined'>Submit</Button>
+										<Button type='submit' variant='contained'>Submit</Button>
 									</>
 								)}
 								{selectedTab === 1 && (
@@ -300,7 +301,7 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<Button type='submit' variant='outlined'>Submit</Button>
+										<Button type='submit' variant='contained'>Submit</Button>
 									</>
 								)}
 							</form>
@@ -316,7 +317,7 @@ const HealthandWellbeing: React.FC = () => {
 				close={closeModalHandler}
 				heading={modalState?.heading}
 				body={modalState?.content}
-			></CustomModal>
+			/>
 		</>
 	);
 };
