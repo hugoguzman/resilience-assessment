@@ -6,6 +6,7 @@ import {
 	IconButton,
 	TextField,
 	Typography,
+	Button
 } from '@mui/material';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
@@ -228,7 +229,8 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<input type='submit' />
+										{/* <input type='submit' /> */}
+										<Button type='submit' variant='outlined'>Submit</Button>
 									</>
 								)}
 								{selectedTab === 1 && (
@@ -298,7 +300,7 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<input type='submit' />
+										<Button type='submit' variant='outlined'>Submit</Button>
 									</>
 								)}
 							</form>

@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextField, Typography } from '@mui/material';
+import { TextField, Typography, Button } from '@mui/material';
 import * as React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -78,7 +78,7 @@ const Home: React.FC = () => {
 					/>
 					<br />
 					<br />
-					<input type='submit' />
+					<Button type='submit' variant='outlined'>Login</Button>
 					
 					<br />
 					<br />
