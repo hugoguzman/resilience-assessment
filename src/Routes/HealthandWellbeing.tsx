@@ -6,7 +6,7 @@ import {
 	IconButton,
 	TextField,
 	Typography,
-	Button
+	Button,
 } from '@mui/material';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
@@ -15,8 +15,6 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { CustomModal } from '../Components/CustomModal';
 import '../Components/HealthWB.css';
-
-
 
 //type definitions for forms ////////////////////
 
@@ -27,7 +25,6 @@ type FormValues = {
 	constantB: number | string;
 };
 
-
 // schema for yup validation ////////////////////
 
 const schema = yup.object().shape({
@@ -36,7 +33,6 @@ const schema = yup.object().shape({
 	constantA: yup.number().required().positive().integer(),
 	constantB: yup.number().required().positive().integer(),
 });
-
 
 //modalReducer programatically determines modal content/actions ////////////////////
 
@@ -70,23 +66,18 @@ const modalReducer = (state: any, action: any) => {
 	}
 };
 
-
-
 //Functional Component ////////////////////
-
 
 const HealthandWellbeing: React.FC = () => {
 
-
-// consts for tab panels ////////////////////
+	// consts for tab panels ////////////////////
 
 	const [selectedTab, setSelectedTab] = React.useState(0);
 	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
 		setSelectedTab(newValue);
 	};
 
-
-// react hook forms useForm declarations ////////////////////	
+	// react-hook-forms useForm declarations ////////////////////
 
 	const {
 		register,
@@ -99,24 +90,32 @@ const HealthandWellbeing: React.FC = () => {
 		mode: 'onBlur',
 		reValidateMode: 'onChange',
 		shouldUnregister: false,
-		criteriaMode: 'all'
+		criteriaMode: 'all',
 	});
 
 	console.log('errors', errors);
-	
 
-// form submit handler defines function to be called on form submit ////////////////////
+	// form submit handler defines function to be called on form submit ////////////////////
 
-	const formSubmitHandler: SubmitHandler<FormValues> = (data: FormValues) => {
+	const formSubmitHandler: SubmitHandler<FormValues> = (
+		data: FormValues,
+		event
+	) => {
 		console.log('form data is', data);
 		alert(JSON.stringify(data, null, 2));
+		console.log('event', event);
+	};
+
+	// submit error message alert
+
+	const onError = () => {
+		alert('ERROR: Please verify that all required fields have been entered.');
 	};
 
 	console.log(`form isDirty=${formState.isDirty}`);
 	console.log(formState.dirtyFields);
 
-
-// modal functions and reducer logic ////////////////////
+	// modal functions and reducer logic ////////////////////
 
 	const [modalState, modalDispatch] = React.useReducer(modalReducer, {
 		heading: '',
@@ -136,8 +135,7 @@ const HealthandWellbeing: React.FC = () => {
 		});
 	};
 
-
-//render ////////////////////
+	//render ////////////////////
 
 	return (
 		<>
@@ -157,7 +155,7 @@ const HealthandWellbeing: React.FC = () => {
 					population through its normal and emergency healthcare provisions.
 				</Typography>
 			</header>
-			<Container sx={{ display: 'flex', flexDirection: 'column'}}>
+			<Container sx={{ display: 'flex', flexDirection: 'column' }}>
 				<Grid
 					container
 					spacing={3}
@@ -184,7 +182,7 @@ const HealthandWellbeing: React.FC = () => {
 							</Typography>
 						</p>
 						<div>
-							<form onSubmit={handleSubmit(formSubmitHandler)}>
+							<form onSubmit={handleSubmit(formSubmitHandler, onError)}>
 								<Tabs
 									sx={{ borderBottom: 1, borderColor: 'divider' }}
 									value={selectedTab}
@@ -260,7 +258,9 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<Button type='submit' variant='contained'>Submit</Button>
+										<Button type='submit' variant='contained'>
+											Submit
+										</Button>
 									</>
 								)}
 								{selectedTab === 1 && (
@@ -330,7 +330,9 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<Button type='submit' variant='contained'>Submit</Button>
+										<Button type='submit' variant='contained'>
+											Submit
+										</Button>
 									</>
 								)}
 							</form>
