@@ -7,6 +7,7 @@ import {
 	TextField,
 	Typography,
 	Button,
+	ButtonGroup,
 } from '@mui/material';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
@@ -28,10 +29,10 @@ type FormValues = {
 // schema for yup validation ////////////////////
 
 const schema = yup.object().shape({
-	inputA: yup.string().required(),
-	inputB: yup.string().required(),
-	constantA: yup.number().required().positive().integer(),
-	constantB: yup.number().required().positive().integer(),
+	inputA: yup.string().required('This field is required.'),
+	inputB: yup.string().required('This field is required.'),
+	constantA: yup.number().typeError('Must be a number.').required('This field is required.').integer(),
+	constantB: yup.number().typeError('Must be a number.').required('This field is required.').integer(),
 });
 
 //modalReducer programatically determines modal content/actions ////////////////////
@@ -84,6 +85,7 @@ const HealthandWellbeing: React.FC = () => {
 		formState,
 		control,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm<FormValues>({
 		resolver: yupResolver(schema),
@@ -109,7 +111,7 @@ const HealthandWellbeing: React.FC = () => {
 	// submit error message alert
 
 	const onError = () => {
-		alert('ERROR: Please verify that all required fields have been entered.');
+		alert('ERROR: Please verify that all required fields have been entered and there are no errors.');
 	};
 
 	console.log(`form isDirty=${formState.isDirty}`);
@@ -258,9 +260,12 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
+										<ButtonGroup>
 										<Button type='submit' variant='contained'>
 											Submit
 										</Button>
+										<Button type='reset' variant='contained' onClick={()=> reset()}> Reset</Button>
+										</ButtonGroup>
 									</>
 								)}
 								{selectedTab === 1 && (
@@ -330,9 +335,12 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
+										<ButtonGroup>
 										<Button type='submit' variant='contained'>
 											Submit
 										</Button>
+										<Button type='reset' variant='contained' onClick={()=> reset()}> Reset</Button>
+										</ButtonGroup>
 									</>
 								)}
 							</form>
