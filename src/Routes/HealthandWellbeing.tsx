@@ -16,6 +16,10 @@ import * as yup from 'yup';
 import { CustomModal } from '../Components/CustomModal';
 import '../Components/HealthWB.css';
 
+
+
+//type definitions for forms ////////////////////
+
 type FormValues = {
 	inputA: string; // later on, need to determine best type definitions for error validation etc.
 	inputB: string;
@@ -23,12 +27,18 @@ type FormValues = {
 	constantB: number | string;
 };
 
+
+// schema for yup validation ////////////////////
+
 const schema = yup.object().shape({
 	inputA: yup.string().required(),
 	inputB: yup.string().required(),
 	constantA: yup.number().required().positive().integer(),
 	constantB: yup.number().required().positive().integer(),
 });
+
+
+//modalReducer programatically determines modal content/actions ////////////////////
 
 const MODAL_A = 'MODAL_A';
 const MODAL_B = 'MODAL_B';
@@ -60,12 +70,23 @@ const modalReducer = (state: any, action: any) => {
 	}
 };
 
-const HealthandWellbeing: React.FC = () => {
-	const [selectedTab, setSelectedTab] = React.useState(0);
 
+
+//Functional Component ////////////////////
+
+
+const HealthandWellbeing: React.FC = () => {
+
+
+// consts for tab panels ////////////////////
+
+	const [selectedTab, setSelectedTab] = React.useState(0);
 	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
 		setSelectedTab(newValue);
 	};
+
+
+// react hook forms useForm declarations ////////////////////	
 
 	const {
 		register,
@@ -78,10 +99,13 @@ const HealthandWellbeing: React.FC = () => {
 		mode: 'onBlur',
 		reValidateMode: 'onChange',
 		shouldUnregister: false,
+		criteriaMode: 'all'
 	});
 
 	console.log('errors', errors);
 	
+
+// form submit handler defines function to be called on form submit ////////////////////
 
 	const formSubmitHandler: SubmitHandler<FormValues> = (data: FormValues) => {
 		console.log('form data is', data);
@@ -90,6 +114,9 @@ const HealthandWellbeing: React.FC = () => {
 
 	console.log(`form isDirty=${formState.isDirty}`);
 	console.log(formState.dirtyFields);
+
+
+// modal functions and reducer logic ////////////////////
 
 	const [modalState, modalDispatch] = React.useReducer(modalReducer, {
 		heading: '',
@@ -108,6 +135,9 @@ const HealthandWellbeing: React.FC = () => {
 			type: CLOSE,
 		});
 	};
+
+
+//render ////////////////////
 
 	return (
 		<>
@@ -230,7 +260,6 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										{/* <input type='submit' /> */}
 										<Button type='submit' variant='contained'>Submit</Button>
 									</>
 								)}
