@@ -11,6 +11,7 @@ import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { CustomModal } from '../Components/CustomModal';
 import HWBForms from '../Components/HWBForms';
+import HWBForm2 from '../Components/HWBForm2'
 
 //type definitions for forms ////////////////////
 
@@ -23,6 +24,14 @@ type FormValues = {
 	constantB: number | string;
 	constantC: number | string;
 	constantD: number | string;
+	input1: string; // later on, need to determine best type definitions for error validation etc.
+	input2: string;
+	input3: string;
+	input4: string;
+	constant1: number | string;
+	constant2: number | string;
+	constant3: number | string;
+	constant4: number | string;
 };
 
 // schema for yup validation ////////////////////
@@ -48,6 +57,30 @@ const schema = yup.object().shape({
 		.required('This field is required.')
 		.integer(),
 	constantD: yup
+		.number()
+		.typeError('Must be a number.')
+		.required('This field is required.')
+		.integer(),
+	input1: yup.string().required('This field is required.'),
+	input2: yup.string().required('This field is required.'),
+	input3: yup.string().required('This field is required.'),
+	input4: yup.string().required('This field is required.'),
+	constant1: yup
+		.number()
+		.typeError('Must be a number.')
+		.required('This field is required.')
+		.integer(),
+	constant2: yup
+		.number()
+		.typeError('Must be a number.')
+		.required('This field is required.')
+		.integer(),
+	constant3: yup
+		.number()
+		.typeError('Must be a number.')
+		.required('This field is required.')
+		.integer(),
+	constant4: yup
 		.number()
 		.typeError('Must be a number.')
 		.required('This field is required.')
@@ -224,6 +257,13 @@ const HealthandWellbeing: React.FC = () => {
 									onSubmit={methods.handleSubmit(formSubmitHandler, onError)}
 								>
 									<HWBForms
+										MODAL_A={MODAL_A}
+										MODAL_B={MODAL_B}
+										MODAL_C={MODAL_C}
+										MODAL_D={MODAL_D}
+										dispatchModalAction={dispatchModalAction}
+									/>
+									<HWBForm2
 										MODAL_A={MODAL_A}
 										MODAL_B={MODAL_B}
 										MODAL_C={MODAL_C}
