@@ -22,6 +22,8 @@ import '../Components/HealthWB.css';
 type FormValues = {
 	inputA: string; // later on, need to determine best type definitions for error validation etc.
 	inputB: string;
+	inputC: string;
+	inputD: string;
 	constantA: number | string;
 	constantB: number | string;
 };
@@ -31,8 +33,16 @@ type FormValues = {
 const schema = yup.object().shape({
 	inputA: yup.string().required('This field is required.'),
 	inputB: yup.string().required('This field is required.'),
-	constantA: yup.number().typeError('Must be a number.').required('This field is required.').integer(),
-	constantB: yup.number().typeError('Must be a number.').required('This field is required.').integer(),
+	constantA: yup
+		.number()
+		.typeError('Must be a number.')
+		.required('This field is required.')
+		.integer(),
+	constantB: yup
+		.number()
+		.typeError('Must be a number.')
+		.required('This field is required.')
+		.integer(),
 });
 
 //modalReducer programatically determines modal content/actions ////////////////////
@@ -70,7 +80,6 @@ const modalReducer = (state: any, action: any) => {
 //Functional Component ////////////////////
 
 const HealthandWellbeing: React.FC = () => {
-
 	// consts for tab panels ////////////////////
 
 	const [selectedTab, setSelectedTab] = React.useState(0);
@@ -111,7 +120,9 @@ const HealthandWellbeing: React.FC = () => {
 	// submit error message alert
 
 	const onError = () => {
-		alert('ERROR: Please verify that all required fields have been entered and there are no errors.');
+		alert(
+			'ERROR: Please verify that all required fields have been entered and there are no errors.'
+		);
 	};
 
 	console.log(`form isDirty=${formState.isDirty}`);
@@ -142,7 +153,10 @@ const HealthandWellbeing: React.FC = () => {
 	return (
 		<>
 			<header className='HealthHead'>
-				<Typography variant='h6' sx={{ fontWeight: 'bold' }}>
+				<Typography
+					variant='h6'
+					sx={{ fontWeight: 'bold', textAlign: 'center' }}
+				>
 					Health and Wellbeing
 				</Typography>{' '}
 				<Typography variant='body2'>
@@ -157,12 +171,12 @@ const HealthandWellbeing: React.FC = () => {
 					population through its normal and emergency healthcare provisions.
 				</Typography>
 			</header>
-			<Container sx={{ display: 'flex', flexDirection: 'column' }}>
+			<Container>
 				<Grid
 					container
 					spacing={3}
 					direction={'column'}
-					sx={{ paddingTop: 6, paddingBottom: 6, display: 'flex', flex: 1 }}
+					sx={{ paddingTop: 6, paddingBottom: 6 }}
 				>
 					<Grid item xs={12} sm={6} md={3}>
 						<Typography
@@ -179,8 +193,11 @@ const HealthandWellbeing: React.FC = () => {
 					</Grid>
 					<Grid item xs={12} sm={6} md={3}>
 						<p>
-							<Typography variant='subtitle1' sx={{ fontWeight: 'bold' }}>
-								1A. Section Title
+							<Typography
+								variant='subtitle1'
+								sx={{ textAlign: 'left', fontWeight: 'bold' }}
+							>
+								1A. Percent Water Supplied Versus Water Demand for One Year
 							</Typography>
 						</p>
 						<div>
@@ -193,10 +210,20 @@ const HealthandWellbeing: React.FC = () => {
 									<Tab label='Input Parameters' />
 									<Tab label='Constants' />
 								</Tabs>
-								{selectedTab === 0 && (
-									<>
+								{selectedTab === 0 && ( ///INPUTS /////////////////////////////
+									<div
+										style={{
+											display: 'flex',
+											alignItems: 'center',
+											flex: 1,
+											flexDirection: 'column',
+											padding: 16,
+											justifyContent: 'space-evenly',
+										}}
+									>
 										<div
 											style={{
+												width: '100%',
 												display: 'flex',
 												alignItems: 'center',
 												flex: 1,
@@ -207,9 +234,9 @@ const HealthandWellbeing: React.FC = () => {
 											<IconButton onClick={() => dispatchModalAction(MODAL_A)}>
 												<HelpIcon></HelpIcon>
 											</IconButton>
-											<Typography sx={{ display: 'block', width: '100%' }}>
+											<div className='textDivs'>
 												Area of rainfall collection structures (ft<sup>2</sup>)
-											</Typography>
+											</div>
 											<Controller
 												name='inputA'
 												control={control}
@@ -229,6 +256,7 @@ const HealthandWellbeing: React.FC = () => {
 										</div>
 										<div
 											style={{
+												width: '100%',
 												display: 'flex',
 												alignItems: 'center',
 												flex: 1,
@@ -240,9 +268,9 @@ const HealthandWellbeing: React.FC = () => {
 												<HelpIcon></HelpIcon>
 											</IconButton>
 
-											<Typography sx={{ display: 'block', width: '100%' }}>
-												Actual rainfall (ft)
-											</Typography>
+											<div className='textDivs'>
+												Area of rainfall collection structures (ft<sup>2</sup>)
+											</div>
 											<Controller
 												name='inputB'
 												control={control}
@@ -260,18 +288,101 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<ButtonGroup>
-										<Button type='submit' variant='contained'>
-											Submit
-										</Button>
-										<Button type='reset' variant='contained' onClick={()=> reset()}> Reset</Button>
-										</ButtonGroup>
-									</>
-								)}
-								{selectedTab === 1 && (
-									<>
 										<div
 											style={{
+												width: '100%',
+												display: 'flex',
+												alignItems: 'center',
+												flex: 1,
+												padding: 16,
+												justifyContent: 'space-evenly',
+											}}
+										>
+											<IconButton onClick={() => dispatchModalAction(MODAL_A)}>
+												<HelpIcon></HelpIcon>
+											</IconButton>
+											<div className='textDivs'>
+												Area of rainfall collection structures (ft<sup>2</sup>)
+											</div>
+											<Controller
+												name='inputA'
+												control={control}
+												defaultValue=''
+												render={({ field }) => (
+													<TextField
+														{...field}
+														label='Input'
+														variant='outlined'
+														error={!!errors.inputA}
+														helperText={
+															errors.inputA ? errors.inputA?.message : ''
+														}
+													/>
+												)}
+											/>
+										</div>
+										<div
+											style={{
+												width: '100%',
+												display: 'flex',
+												alignItems: 'center',
+												flex: 1,
+												padding: 16,
+												justifyContent: 'space-evenly',
+											}}
+										>
+											<IconButton onClick={() => dispatchModalAction(MODAL_A)}>
+												<HelpIcon></HelpIcon>
+											</IconButton>
+											<div className='textDivs'>
+												Area of rainfall collection structures (ft<sup>2</sup>)
+											</div>
+											<Controller
+												name='inputA'
+												control={control}
+												defaultValue=''
+												render={({ field }) => (
+													<TextField
+														{...field}
+														label='Input'
+														variant='outlined'
+														error={!!errors.inputA}
+														helperText={
+															errors.inputA ? errors.inputA?.message : ''
+														}
+													/>
+												)}
+											/>
+										</div>
+										<ButtonGroup sx={{ padding: 3 }}>
+											<Button type='submit' variant='contained'>
+												Submit
+											</Button>
+											<Button
+												type='reset'
+												variant='contained'
+												onClick={() => reset()}
+											>
+												{' '}
+												Reset
+											</Button>
+										</ButtonGroup>
+									</div>
+								)}
+								{selectedTab === 1 && ( ///CONSTANTS  /////////////////////////////
+									<div
+										style={{
+											display: 'flex',
+											alignItems: 'center',
+											flex: 1,
+											flexDirection: 'column',
+											padding: 16,
+											justifyContent: 'space-evenly',
+										}}
+									>
+										<div
+											style={{
+												width: '100%',
 												display: 'flex',
 												alignItems: 'center',
 												flex: 1,
@@ -282,9 +393,9 @@ const HealthandWellbeing: React.FC = () => {
 											<IconButton>
 												<HelpIcon></HelpIcon>
 											</IconButton>
-											<Typography sx={{ display: 'block', width: '100%' }}>
-												This is where words go
-											</Typography>
+											<div className='textDivs'>
+												Area of rainfall collection structures (ft<sup>2</sup>)
+											</div>
 											<Controller
 												name='constantA'
 												control={control}
@@ -304,6 +415,7 @@ const HealthandWellbeing: React.FC = () => {
 										</div>
 										<div
 											style={{
+												width: '100%',
 												display: 'flex',
 												alignItems: 'center',
 												flex: 1,
@@ -315,9 +427,9 @@ const HealthandWellbeing: React.FC = () => {
 												<HelpIcon></HelpIcon>
 											</IconButton>
 
-											<Typography sx={{ display: 'block', width: '100%' }}>
-												This is where words go
-											</Typography>
+											<div className='textDivs'>
+												Area of rainfall collection structures (ft<sup>2</sup>)
+											</div>
 											<Controller
 												name='constantB'
 												control={control}
@@ -335,13 +447,21 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<ButtonGroup>
-										<Button type='submit' variant='contained'>
-											Submit
-										</Button>
-										<Button type='reset' variant='contained' onClick={()=> reset()}> Reset</Button>
+
+										<ButtonGroup sx={{ padding: 3 }}>
+											<Button type='submit' variant='contained'>
+												Submit
+											</Button>
+											<Button
+												type='reset'
+												variant='contained'
+												onClick={() => reset()}
+											>
+												{' '}
+												Reset
+											</Button>
 										</ButtonGroup>
-									</>
+									</div>
 								)}
 							</form>
 						</div>
