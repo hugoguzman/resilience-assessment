@@ -8,9 +8,16 @@ export default function InfrastructureandEnvironment() {
 				<Typography variant='h6' sx={{ fontWeight: 'bold', textAlign: 'left' }}>
 					Infrastructure and Environment
 				</Typography>{' '}
-				<Typography variant='body1'>
+				<Typography variant='body2'>
 					{' '}
-					This dimension relates to infrastrucure and the environment.
+					This dimension relates to place - the quality of infrastructure and
+					ecosystems that protects, provide and connect us. The CRI considers
+					the robustness of infrastructure and ecosystems that protect us from
+					natural hazards. The continuity of critical services, under shock or
+					stress situations are also important within this dimension. In
+					particular, water supply, power distribution, and solid waste
+					management; the transportation systems that enable the flow of goods,
+					services, people, and information.
 				</Typography>
 			</header>
 			<Container>

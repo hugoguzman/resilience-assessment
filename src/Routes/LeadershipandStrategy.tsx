@@ -7,9 +7,14 @@ export default function LeadershipandStrategy() {
 				<Typography variant='h6' sx={{ fontWeight: 'bold' }}>
 					Leadership and Strategy
 				</Typography>{' '}
-				<Typography variant='body1'>
+				<Typography variant='body2'>
 					{' '}
-					This dimension relates to leadership and strategy.
+					Effective leadership is paramount to guide cities as they become more
+					resilient and sustainable. Learning from the past is important for
+					future successes. Therefore, educating the community will allow them
+					to prepare for the future and take action. Proper communication within
+					residents and stakeholders is key to understand the needs and wants of
+					the community so they align with the city's strategic plan.
 				</Typography>
 			</header>
 			<Container>
