@@ -27,7 +27,7 @@ export default function TopAppBar() {
 						sx={{ top: 'auto', bottom: 0 }}
 					>
 						<Toolbar>
-							<Typography>
+							<Typography variant="body2">
 								Resilience Design Assessment Tool © FIU 2021-2022
 							</Typography>
 						</Toolbar>
