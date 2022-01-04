@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-import TopAppBar from './Components/AppBar';
+import { TopAppBar } from './Components/AppBar';
 import Home from './Routes/Home';
 import HealthandWellbeing from './Routes/HealthandWellbeing';
 import { EconomyandSociety } from './Routes/EconomyandSociety';

@@ -6,11 +6,18 @@ import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NavDrawer from './NavDrawer';
+import { useLocation } from 'react-router-dom'
 
-export default function TopAppBar() {
+
+
+
+
+
+export const TopAppBar = () => {
+	const location = useLocation();
 	const [openDrawer, setOpenDrawer] = useState(true);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -20,6 +27,14 @@ export default function TopAppBar() {
 		setSelectedTab(newValue);
 	};
 	
+	useEffect(() => {
+		let path = location.pathname;
+		if (path === '/' && selectedTab !== 0) setSelectedTab(0);
+		else if (path === '/health-and-wellbeing' && selectedTab !== 1) setSelectedTab(1);
+		else if (path === '/economy-and-society' && selectedTab !== 2) setSelectedTab(2);
+		else if (path === '/infrastructure-and-environment' && selectedTab !== 3) setSelectedTab(3);
+		else if (path === '/leadership-and-strategy' && selectedTab !== 4) setSelectedTab(4);
+	}, [selectedTab])
 	
 	console.log(isMobile);
 
