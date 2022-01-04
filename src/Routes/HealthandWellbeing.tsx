@@ -82,14 +82,14 @@ const modalReducer = (state: any, action: any) => {
 
 				show: true,
 			};
-			case MODAL_C:
+		case MODAL_C:
 			return {
 				heading: `Modal 1C`,
 				content: `Content for Modal 1C goes here.`,
 
 				show: true,
 			};
-			case MODAL_D:
+		case MODAL_D:
 			return {
 				heading: `Modal 1D`,
 				content: `Content for Modal 1D goes here.`,
@@ -182,10 +182,7 @@ const HealthandWellbeing: React.FC = () => {
 	return (
 		<>
 			<header className='header'>
-				<Typography
-					variant='h6'
-					sx={{ fontWeight: 'bold', textAlign: 'left' }}
-				>
+				<Typography variant='h6' sx={{ fontWeight: 'bold', textAlign: 'left' }}>
 					Health and Wellbeing
 				</Typography>{' '}
 				<Typography variant='body2'>
@@ -205,7 +202,7 @@ const HealthandWellbeing: React.FC = () => {
 					container
 					spacing={3}
 					direction={'column'}
-					sx={{ paddingTop: 2, height:'100%' }}
+					sx={{ paddingTop: 2, height: '100%' }}
 				>
 					<Grid item xs={12} sm={6} md={3}>
 						<Typography
@@ -221,14 +218,13 @@ const HealthandWellbeing: React.FC = () => {
 						</Typography>
 					</Grid>
 					<Grid item xs={12} sm={6} md={3}>
-						<p>
-							<Typography
-								variant='subtitle1'
-								sx={{ textAlign: 'left', fontWeight: 'bold' }}
-							>
-								1A. Percent Water Supplied Versus Water Demand for One Year
-							</Typography>
-						</p>
+						<Typography
+							variant='subtitle1'
+							sx={{ textAlign: 'left'}}
+						>
+							<b>1A.</b> Percent Water Supplied Versus Water Demand for One Year
+						</Typography>
+
 						<div>
 							<form onSubmit={handleSubmit(formSubmitHandler, onError)}>
 								<Tabs
@@ -240,17 +236,18 @@ const HealthandWellbeing: React.FC = () => {
 									<Tab label='Constants' />
 								</Tabs>
 								{selectedTab === 0 && ( ///INPUTS /////////////////////////////
-									<div style={{
-										display: 'flex',
-										alignItems: 'center',
-										flex: 1,
-										flexDirection: 'column',
-										padding: 16,
-										justifyContent: 'space-evenly',
-									}}
-										
+									<div
+										style={{
+											display: 'flex',
+											alignItems: 'center',
+											flex: 1,
+											flexDirection: 'column',
+											padding: 16,
+											justifyContent: 'space-evenly',
+										}}
 									>
-										<div style={{
+										<div
+											style={{
 												width: '100%',
 												display: 'flex',
 												alignItems: 'center',
@@ -258,7 +255,6 @@ const HealthandWellbeing: React.FC = () => {
 												padding: 16,
 												justifyContent: 'space-evenly',
 											}}
-											
 										>
 											<IconButton onClick={() => dispatchModalAction(MODAL_A)}>
 												<HelpIcon></HelpIcon>
@@ -283,7 +279,8 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<div style={{
+										<div
+											style={{
 												width: '100%',
 												display: 'flex',
 												alignItems: 'center',
@@ -291,15 +288,12 @@ const HealthandWellbeing: React.FC = () => {
 												padding: 16,
 												justifyContent: 'space-evenly',
 											}}
-											
 										>
 											<IconButton onClick={() => dispatchModalAction(MODAL_B)}>
 												<HelpIcon></HelpIcon>
 											</IconButton>
 
-											<div className='textDivs'>
-												Annual rainfall (ft)
-											</div>
+											<div className='textDivs'>Annual rainfall (ft)</div>
 											<Controller
 												name='inputB'
 												control={control}
@@ -317,7 +311,7 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<div 
+										<div
 											style={{
 												width: '100%',
 												display: 'flex',
@@ -350,7 +344,7 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<div 
+										<div
 											style={{
 												width: '100%',
 												display: 'flex',
