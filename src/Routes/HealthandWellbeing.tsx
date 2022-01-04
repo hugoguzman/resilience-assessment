@@ -1,20 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import HelpIcon from '@mui/icons-material/Help';
 import {
-	Container,
-	Grid,
-	IconButton,
-	TextField,
-	Typography,
 	Button,
 	ButtonGroup,
+	Container,
+	Grid,
+	Typography,
 } from '@mui/material';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
 import * as React from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { CustomModal } from '../Components/CustomModal';
+import HWBForms from '../Components/HWBForms';
 
 //type definitions for forms ////////////////////
 
@@ -111,21 +107,21 @@ const modalReducer = (state: any, action: any) => {
 const HealthandWellbeing: React.FC = () => {
 	// consts for tab panels ////////////////////
 
-	const [selectedTab, setSelectedTab] = React.useState(0);
-	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-		setSelectedTab(newValue);
-	};
+	// const [selectedTab, setSelectedTab] = React.useState(0);
+	// const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+	// 	setSelectedTab(newValue);
+	// };
 
 	// react-hook-forms useForm declarations ////////////////////
 
-	const {
-		register,
-		formState,
-		control,
-		handleSubmit,
-		reset,
-		formState: { errors },
-	} = useForm<FormValues>({
+	// register,
+	// formState,
+	// control,
+	// handleSubmit,
+	// reset,
+	// formState: { errors },
+
+	const methods = useForm<FormValues>({
 		resolver: yupResolver(schema),
 		mode: 'onBlur',
 		reValidateMode: 'onChange',
@@ -133,7 +129,7 @@ const HealthandWellbeing: React.FC = () => {
 		criteriaMode: 'all',
 	});
 
-	console.log('errors', errors);
+	// console.log('errors', errors);
 
 	// form submit handler defines function to be called on form submit ////////////////////
 
@@ -154,8 +150,8 @@ const HealthandWellbeing: React.FC = () => {
 		);
 	};
 
-	console.log(`form isDirty=${formState.isDirty}`);
-	console.log(formState.dirtyFields);
+	console.log(`form isDirty=${methods.formState.isDirty}`);
+	console.log(methods.formState.dirtyFields);
 
 	// modal functions and reducer logic ////////////////////
 
@@ -218,341 +214,38 @@ const HealthandWellbeing: React.FC = () => {
 						</Typography>
 					</Grid>
 					<Grid item xs={12} sm={6} md={3}>
-						<Typography
-							variant='subtitle1'
-							sx={{ textAlign: 'left'}}
-						>
+						<Typography variant='subtitle1' sx={{ textAlign: 'left' }}>
 							<b>1A.</b> Percent Water Supplied Versus Water Demand for One Year
 						</Typography>
 
 						<div>
-							<form onSubmit={handleSubmit(formSubmitHandler, onError)}>
-								<Tabs
-									sx={{ borderBottom: 1, borderColor: 'divider' }}
-									value={selectedTab}
-									onChange={handleTabChange}
+							<FormProvider {...methods}>
+								<form
+									onSubmit={methods.handleSubmit(formSubmitHandler, onError)}
 								>
-									<Tab label='Input Parameters' />
-									<Tab label='Constants' />
-								</Tabs>
-								{selectedTab === 0 && ( ///INPUTS /////////////////////////////
-									<div
-										style={{
-											display: 'flex',
-											alignItems: 'center',
-											flex: 1,
-											flexDirection: 'column',
-											padding: 16,
-											justifyContent: 'space-evenly',
-										}}
-									>
-										<div
-											style={{
-												width: '100%',
-												display: 'flex',
-												alignItems: 'center',
-												flex: 1,
-												padding: 16,
-												justifyContent: 'space-evenly',
-											}}
-										>
-											<IconButton onClick={() => dispatchModalAction(MODAL_A)}>
-												<HelpIcon></HelpIcon>
-											</IconButton>
-											<div className='textDivs'>
-												Area of rainfall collection structures (ft<sup>2</sup>)
-											</div>
-											<Controller
-												name='inputA'
-												control={control}
-												defaultValue=''
-												render={({ field }) => (
-													<TextField
-														{...field}
-														label='Input'
-														variant='outlined'
-														error={!!errors.inputA}
-														helperText={
-															errors.inputA ? errors.inputA?.message : ''
-														}
-													/>
-												)}
-											/>
-										</div>
-										<div
-											style={{
-												width: '100%',
-												display: 'flex',
-												alignItems: 'center',
-												flex: 1,
-												padding: 16,
-												justifyContent: 'space-evenly',
-											}}
-										>
-											<IconButton onClick={() => dispatchModalAction(MODAL_B)}>
-												<HelpIcon></HelpIcon>
-											</IconButton>
+									<HWBForms
+										MODAL_A={MODAL_A}
+										MODAL_B={MODAL_B}
+										MODAL_C={MODAL_C}
+										MODAL_D={MODAL_D}
+										dispatchModalAction={dispatchModalAction}
+									/>
 
-											<div className='textDivs'>Annual rainfall (ft)</div>
-											<Controller
-												name='inputB'
-												control={control}
-												defaultValue=''
-												render={({ field }) => (
-													<TextField
-														{...field}
-														label='Input'
-														variant='outlined'
-														error={!!errors.inputB}
-														helperText={
-															errors.inputB ? errors.inputB?.message : ''
-														}
-													/>
-												)}
-											/>
-										</div>
-										<div
-											style={{
-												width: '100%',
-												display: 'flex',
-												alignItems: 'center',
-												flex: 1,
-												padding: 16,
-												justifyContent: 'space-evenly',
-											}}
+									<ButtonGroup sx={{ padding: 3 }}>
+										<Button type='submit' variant='contained'>
+											Submit
+										</Button>
+										<Button
+											type='reset'
+											variant='contained'
+											onClick={() => methods.reset()}
 										>
-											<IconButton onClick={() => dispatchModalAction(MODAL_C)}>
-												<HelpIcon></HelpIcon>
-											</IconButton>
-											<div className='textDivs'>
-												Area of office space (ft<sup>2</sup>)
-											</div>
-											<Controller
-												name='inputC'
-												control={control}
-												defaultValue=''
-												render={({ field }) => (
-													<TextField
-														{...field}
-														label='Input'
-														variant='outlined'
-														error={!!errors.inputC}
-														helperText={
-															errors.inputC ? errors.inputC?.message : ''
-														}
-													/>
-												)}
-											/>
-										</div>
-										<div
-											style={{
-												width: '100%',
-												display: 'flex',
-												alignItems: 'center',
-												flex: 1,
-												padding: 16,
-												justifyContent: 'space-evenly',
-											}}
-										>
-											<IconButton onClick={() => dispatchModalAction(MODAL_D)}>
-												<HelpIcon></HelpIcon>
-											</IconButton>
-											<div className='textDivs'>
-												Area of commercial space (ft<sup>2</sup>)
-											</div>
-											<Controller
-												name='inputD'
-												control={control}
-												defaultValue=''
-												render={({ field }) => (
-													<TextField
-														{...field}
-														label='Input'
-														variant='outlined'
-														error={!!errors.inputD}
-														helperText={
-															errors.inputD ? errors.inputD?.message : ''
-														}
-													/>
-												)}
-											/>
-										</div>
-										<ButtonGroup sx={{ padding: 3 }}>
-											<Button type='submit' variant='contained'>
-												Submit
-											</Button>
-											<Button
-												type='reset'
-												variant='contained'
-												onClick={() => reset()}
-											>
-												{' '}
-												Reset
-											</Button>
-										</ButtonGroup>
-									</div>
-								)}
-								{selectedTab === 1 && ( ///CONSTANTS  /////////////////////////////
-									<div
-										style={{
-											display: 'flex',
-											alignItems: 'center',
-											flex: 1,
-											flexDirection: 'column',
-											padding: 16,
-											justifyContent: 'space-evenly',
-										}}
-									>
-										<div
-											style={{
-												width: '100%',
-												display: 'flex',
-												alignItems: 'center',
-												flex: 1,
-												padding: 16,
-												justifyContent: 'space-evenly',
-											}}
-										>
-											<IconButton onClick={() => dispatchModalAction(MODAL_A)}>
-												<HelpIcon></HelpIcon>
-											</IconButton>
-											<div className='textDivs'>
-												Area of rainfall collection structures (ft<sup>2</sup>)
-											</div>
-											<Controller
-												name='constantA'
-												control={control}
-												defaultValue={''}
-												render={({ field }) => (
-													<TextField
-														{...field}
-														label='Constant'
-														variant='outlined'
-														error={!!errors.constantA}
-														helperText={
-															errors.constantA ? errors.constantA?.message : ''
-														}
-													/>
-												)}
-											/>
-										</div>
-										<div
-											style={{
-												width: '100%',
-												display: 'flex',
-												alignItems: 'center',
-												flex: 1,
-												padding: 16,
-												justifyContent: 'space-evenly',
-											}}
-										>
-											<IconButton onClick={() => dispatchModalAction(MODAL_B)}>
-												<HelpIcon></HelpIcon>
-											</IconButton>
-
-											<div className='textDivs'>
-												Area of rainfall collection structures (ft<sup>2</sup>)
-											</div>
-											<Controller
-												name='constantB'
-												control={control}
-												defaultValue={''}
-												render={({ field }) => (
-													<TextField
-														{...field}
-														label='Constant'
-														variant='outlined'
-														error={!!errors.constantB}
-														helperText={
-															errors.constantB ? errors.constantB?.message : ''
-														}
-													/>
-												)}
-											/>
-										</div>
-										<div
-											style={{
-												width: '100%',
-												display: 'flex',
-												alignItems: 'center',
-												flex: 1,
-												padding: 16,
-												justifyContent: 'space-evenly',
-											}}
-										>
-											<IconButton onClick={() => dispatchModalAction(MODAL_C)}>
-												<HelpIcon></HelpIcon>
-											</IconButton>
-											<div className='textDivs'>
-												Area of rainfall collection structures (ft<sup>2</sup>)
-											</div>
-											<Controller
-												name='constantC'
-												control={control}
-												defaultValue={''}
-												render={({ field }) => (
-													<TextField
-														{...field}
-														label='Constant'
-														variant='outlined'
-														error={!!errors.constantC}
-														helperText={
-															errors.constantC ? errors.constantC?.message : ''
-														}
-													/>
-												)}
-											/>
-										</div>
-										<div
-											style={{
-												width: '100%',
-												display: 'flex',
-												alignItems: 'center',
-												flex: 1,
-												padding: 16,
-												justifyContent: 'space-evenly',
-											}}
-										>
-											<IconButton onClick={() => dispatchModalAction(MODAL_D)}>
-												<HelpIcon></HelpIcon>
-											</IconButton>
-											<div className='textDivs'>
-												Area of rainfall collection structures (ft<sup>2</sup>)
-											</div>
-											<Controller
-												name='constantD'
-												control={control}
-												defaultValue={''}
-												render={({ field }) => (
-													<TextField
-														{...field}
-														label='Constant'
-														variant='outlined'
-														error={!!errors.constantD}
-														helperText={
-															errors.constantD ? errors.constantD?.message : ''
-														}
-													/>
-												)}
-											/>
-										</div>
-
-										<ButtonGroup sx={{ padding: 3 }}>
-											<Button type='submit' variant='contained'>
-												Submit
-											</Button>
-											<Button
-												type='reset'
-												variant='contained'
-												onClick={() => reset()}
-											>
-												{' '}
-												Reset
-											</Button>
-										</ButtonGroup>
-									</div>
-								)}
-							</form>
+											{' '}
+											Reset
+										</Button>
+									</ButtonGroup>
+								</form>
+							</FormProvider>
 						</div>
 					</Grid>
 					<Grid item xs={12} sm={6} md={3}></Grid>
