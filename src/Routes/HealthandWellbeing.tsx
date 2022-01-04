@@ -220,10 +220,10 @@ const HealthandWellbeing: React.FC = () => {
 							variant='subtitle1'
 							sx={{ textAlign: 'center', fontWeight: 'bold' }}
 						>
-							Input
+							<u>Input</u>
 						</Typography>
-						<Typography variant='body1'>
-							Question 1: How are essential resources for a person's basic
+						<Typography variant='subtitle1'>
+							<u><b>Question 1:</b></u> How are essential resources for a person's basic
 							physiological needs provided or accessible? (energy, water, food,
 							shelter, waste)
 						</Typography>
