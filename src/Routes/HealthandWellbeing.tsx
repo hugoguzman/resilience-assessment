@@ -11,7 +11,7 @@ import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { CustomModal } from '../Components/CustomModal';
 import HWBForms from '../Components/HWBForms';
-import HWBForm2 from '../Components/HWBForm2'
+import HWBForm2 from '../Components/HWBForm2';
 
 //type definitions for forms ////////////////////
 
@@ -24,7 +24,7 @@ type FormValues = {
 	constantB: number | string;
 	constantC: number | string;
 	constantD: number | string;
-	input1: string; // later on, need to determine best type definitions for error validation etc.
+	input1: string;
 	input2: string;
 	input3: string;
 	input4: string;
@@ -138,22 +138,6 @@ const modalReducer = (state: any, action: any) => {
 //Functional Component ////////////////////
 
 const HealthandWellbeing: React.FC = () => {
-	// consts for tab panels ////////////////////
-
-	// const [selectedTab, setSelectedTab] = React.useState(0);
-	// const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-	// 	setSelectedTab(newValue);
-	// };
-
-	// react-hook-forms useForm declarations ////////////////////
-
-	// register,
-	// formState,
-	// control,
-	// handleSubmit,
-	// reset,
-	// formState: { errors },
-
 	const methods = useForm<FormValues>({
 		resolver: yupResolver(schema),
 		mode: 'onBlur',
@@ -161,8 +145,6 @@ const HealthandWellbeing: React.FC = () => {
 		shouldUnregister: false,
 		criteriaMode: 'all',
 	});
-
-	// console.log('errors', errors);
 
 	// form submit handler defines function to be called on form submit ////////////////////
 
@@ -263,6 +245,9 @@ const HealthandWellbeing: React.FC = () => {
 										MODAL_D={MODAL_D}
 										dispatchModalAction={dispatchModalAction}
 									/>
+									<Typography variant='subtitle1' sx={{ textAlign: 'left' }}>
+										<b>1B.</b> Food Security
+									</Typography>
 									<HWBForm2
 										MODAL_A={MODAL_A}
 										MODAL_B={MODAL_B}
@@ -270,20 +255,21 @@ const HealthandWellbeing: React.FC = () => {
 										MODAL_D={MODAL_D}
 										dispatchModalAction={dispatchModalAction}
 									/>
-
-									<ButtonGroup sx={{ padding: 3 }}>
-										<Button type='submit' variant='contained'>
-											Submit
-										</Button>
-										<Button
-											type='reset'
-											variant='contained'
-											onClick={() => methods.reset()}
-										>
-											{' '}
-											Reset
-										</Button>
-									</ButtonGroup>
+									<div className='innerGridDiv'>
+										<ButtonGroup sx={{ padding: 3 }}>
+											<Button type='submit' variant='contained'>
+												Submit
+											</Button>
+											<Button
+												type='reset'
+												variant='contained'
+												onClick={() => methods.reset()}
+											>
+												{' '}
+												Reset
+											</Button>
+										</ButtonGroup>
+									</div>
 								</form>
 							</FormProvider>
 						</div>

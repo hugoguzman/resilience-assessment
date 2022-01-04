@@ -66,7 +66,7 @@ const HWBForms: React.FC<Props> = ({
 							<HelpIcon></HelpIcon>
 						</IconButton>
 						<div className='textDivs'>
-							structures (ft<sup>2</sup>)
+							Potable water harvest area
 						</div>
 						<Controller
 							name='input1'
@@ -97,7 +97,7 @@ const HWBForms: React.FC<Props> = ({
 							<HelpIcon></HelpIcon>
 						</IconButton>
 
-						<div className='textDivs'>Annual  (ft)</div>
+						<div className='textDivs'>Potable water storage</div>
 						<Controller
 							name='input2'
 							control={control}
@@ -127,7 +127,7 @@ const HWBForms: React.FC<Props> = ({
 							<HelpIcon></HelpIcon>
 						</IconButton>
 						<div className='textDivs'>
-							Area (ft<sup>2</sup>)
+							Area dedicated to vegetables
 						</div>
 						<Controller
 							name='input3'
@@ -158,7 +158,7 @@ const HWBForms: React.FC<Props> = ({
 							<HelpIcon></HelpIcon>
 						</IconButton>
 						<div className='textDivs'>
-							Area  space (ft<sup>2</sup>)
+							Area dedicated to aquatic vegetables
 						</div>
 						<Controller
 							name='input4'
@@ -202,7 +202,7 @@ const HWBForms: React.FC<Props> = ({
 							<HelpIcon></HelpIcon>
 						</IconButton>
 						<div className='textDivs'>
-							Area of rainfall collection structures (ft<sup>2</sup>)
+							Average Calories/sq. foot/yr for vegetable farming
 						</div>
 						<Controller
 							name='constant1'
@@ -234,7 +234,7 @@ const HWBForms: React.FC<Props> = ({
 						</IconButton>
 
 						<div className='textDivs'>
-							Area of ctures (ft<sup>2</sup>)
+							Average Calories/sq. foot/yr for aquatic vegetable farming
 						</div>
 						<Controller
 							name='constant2'
@@ -265,7 +265,7 @@ const HWBForms: React.FC<Props> = ({
 							<HelpIcon></HelpIcon>
 						</IconButton>
 						<div className='textDivs'>
-							Area of res (ft<sup>2</sup>)
+							Average Calories/sq. foot/yr for fruit farming
 						</div>
 						<Controller
 							name='constant3'
@@ -296,7 +296,7 @@ const HWBForms: React.FC<Props> = ({
 							<HelpIcon></HelpIcon>
 						</IconButton>
 						<div className='textDivs'>
-							Area of raiructures (ft<sup>2</sup>)
+							Area (ft<sup>2</sup>)
 						</div>
 						<Controller
 							name='constant4'
