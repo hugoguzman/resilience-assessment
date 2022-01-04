@@ -15,7 +15,6 @@ import * as React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { CustomModal } from '../Components/CustomModal';
-import '../Components/HealthWB.css';
 
 //type definitions for forms ////////////////////
 
@@ -182,10 +181,10 @@ const HealthandWellbeing: React.FC = () => {
 
 	return (
 		<>
-			<header className='HealthHead'>
+			<header className='header'>
 				<Typography
 					variant='h6'
-					sx={{ fontWeight: 'bold', textAlign: 'center' }}
+					sx={{ fontWeight: 'bold', textAlign: 'left' }}
 				>
 					Health and Wellbeing
 				</Typography>{' '}
@@ -206,7 +205,7 @@ const HealthandWellbeing: React.FC = () => {
 					container
 					spacing={3}
 					direction={'column'}
-					sx={{ paddingTop: 6, paddingBottom: 6 }}
+					sx={{ paddingTop: 2, height:'100%' }}
 				>
 					<Grid item xs={12} sm={6} md={3}>
 						<Typography
@@ -241,18 +240,17 @@ const HealthandWellbeing: React.FC = () => {
 									<Tab label='Constants' />
 								</Tabs>
 								{selectedTab === 0 && ( ///INPUTS /////////////////////////////
-									<div
-										style={{
-											display: 'flex',
-											alignItems: 'center',
-											flex: 1,
-											flexDirection: 'column',
-											padding: 16,
-											justifyContent: 'space-evenly',
-										}}
+									<div style={{
+										display: 'flex',
+										alignItems: 'center',
+										flex: 1,
+										flexDirection: 'column',
+										padding: 16,
+										justifyContent: 'space-evenly',
+									}}
+										
 									>
-										<div
-											style={{
+										<div style={{
 												width: '100%',
 												display: 'flex',
 												alignItems: 'center',
@@ -260,6 +258,7 @@ const HealthandWellbeing: React.FC = () => {
 												padding: 16,
 												justifyContent: 'space-evenly',
 											}}
+											
 										>
 											<IconButton onClick={() => dispatchModalAction(MODAL_A)}>
 												<HelpIcon></HelpIcon>
@@ -284,8 +283,7 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<div
-											style={{
+										<div style={{
 												width: '100%',
 												display: 'flex',
 												alignItems: 'center',
@@ -293,6 +291,7 @@ const HealthandWellbeing: React.FC = () => {
 												padding: 16,
 												justifyContent: 'space-evenly',
 											}}
+											
 										>
 											<IconButton onClick={() => dispatchModalAction(MODAL_B)}>
 												<HelpIcon></HelpIcon>
@@ -318,7 +317,7 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<div
+										<div 
 											style={{
 												width: '100%',
 												display: 'flex',
@@ -351,7 +350,7 @@ const HealthandWellbeing: React.FC = () => {
 												)}
 											/>
 										</div>
-										<div
+										<div 
 											style={{
 												width: '100%',
 												display: 'flex',

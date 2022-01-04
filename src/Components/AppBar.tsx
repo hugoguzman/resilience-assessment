@@ -15,20 +15,26 @@ export default function TopAppBar() {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+	const [selectedTab, setSelectedTab] = useState(0);
+	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+		setSelectedTab(newValue);
+	};
+	
+	
 	console.log(isMobile);
 
 	return (
 		<>
-			<Box>
-				<AppBar color='transparent' elevation={0} position='static'>
+			<Box flexGrow={1} sx={{ alignContent:'center', display: "flex" }}>
+				<AppBar color='transparent' elevation={0} position='static' >
 					<Toolbar>
 						{isMobile ? (
 							<NavDrawer
 								openDrawer={openDrawer}
 								setOpenDrawer={setOpenDrawer}
 							/>
-						) : (
-							<Tabs>
+						) : (<Box sx={{margin: 'auto'}}>
+							<Tabs variant='fullWidth' centered value={selectedTab} onChange={handleTabChange}>
 								<Tab label='Home' to='/' component={Link} />
 								<Tab
 									label='Health & Wellbeing'
@@ -51,6 +57,7 @@ export default function TopAppBar() {
 									component={Link}
 								/>
 							</Tabs>
+							</Box>
 						)}
 						{isMobile ? (
 							<IconButton onClick={() => setOpenDrawer(true)}>
@@ -59,7 +66,8 @@ export default function TopAppBar() {
 						) : null}
 					</Toolbar>
 				</AppBar>
-				<Outlet />
+				{/* <Toolbar /> */}
+				{/* <Outlet /> */}
 			</Box>
 		</>
 	);

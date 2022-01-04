@@ -1,11 +1,9 @@
-import '../App.css';
 import { Button, Container, Grid, Typography } from '@mui/material';
-import '../Components/HealthWB.css';
 
 export default function LeadershipandStrategy() {
 	return (
 		<>
-			<header className='HealthHead'>
+			<header className='header'>
 				<Typography variant='h6' sx={{ fontWeight: 'bold' }}>
 					Leadership and Strategy
 				</Typography>{' '}
@@ -19,7 +17,7 @@ export default function LeadershipandStrategy() {
 					container
 					spacing={3}
 					direction={'column'}
-					sx={{ paddingTop: 6, paddingBottom: 6, display: 'flex', flex: 1 }}
+					sx={{ paddingTop: 2, display: 'flex', flex: 1 }}
 				>
 					<Grid item xs={12} sm={6} md={3}>
 						<Typography

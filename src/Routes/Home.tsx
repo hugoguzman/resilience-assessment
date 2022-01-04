@@ -1,9 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TextField, Typography, Button } from '@mui/material';
+import { TextField, Typography, Button, Container, Grid } from '@mui/material';
 import * as React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import '../Components/Home.css';
+// import '../Components/Home.css';
 
 type FormValues = {
 	email: string;
@@ -33,57 +33,75 @@ const Home: React.FC = () => {
 
 	return (
 		<>
-			<header className='HomeHead'>
-				<Typography variant='h5' sx={{ fontWeight: 'bold' }}>
-					Welcome to Resilience Design Assessment Tool!
+			<header className='header'>
+				<Typography
+					variant='h5'
+					sx={{ fontWeight: 'bold', textAlign: 'center' }}
+				>
+					Welcome to the Resilience Design Assessment Tool!
 				</Typography>{' '}
-				<Typography variant='h6'> Please Log in.</Typography>
+				<Typography variant='h6' sx={{textAlign: 'center' }}> Please log in.</Typography>
 			</header>
-			<div style={{ display: 'flex', flex: 1, alignItems: 'center', flexDirection: 'column', paddingTop: 8 }}>
-				<form onSubmit={handleSubmit(onSubmit)}>
-					<br />
-					<Controller
-						name='email'
-						control={control}
-						defaultValue='example@fiu.edu'
-						render={({ field }) => (
-							<TextField
-								{...field}
-								label='Email'
-								variant='outlined'
-								error={!!errors.email}
-								helperText={errors.email ? errors.email?.message : ''}
-								fullWidth
-								margin='dense'
+			<Container sx={{ display: 'flex', flexDirection: 'column' }}>
+				<Grid
+					container
+					spacing={3}
+					direction={'column'}
+					sx={{ paddingTop: 0, display: 'flex', flex: 1 }}
+				>
+					<Grid item xs={12} sm={6} md={3}>
+						<div className='outerGridDiv'>
+						<form onSubmit={handleSubmit(onSubmit)}>
+							<br />
+							<Controller
+								name='email'
+								control={control}
+								defaultValue='example@fiu.edu'
+								render={({ field }) => (
+									<TextField
+										{...field}
+										label='Email'
+										variant='outlined'
+										error={!!errors.email}
+										helperText={errors.email ? errors.email?.message : ''}
+										fullWidth
+										margin='dense'
+									/>
+								)}
 							/>
-						)}
-					/>
-					<br />
-					<Controller
-						name='password'
-						control={control}
-						defaultValue=''
-						render={({ field }) => (
-							<TextField
-								{...field}
-								type='password'
-								label='Password'
-								variant='outlined'
-								error={!!errors.password}
-								helperText={errors.password ? errors.password?.message : ''}
-								fullWidth
-								margin='dense'
+							<br />
+							<Controller
+								name='password'
+								control={control}
+								defaultValue=''
+								render={({ field }) => (
+									<TextField
+										{...field}
+										type='password'
+										label='Password'
+										variant='outlined'
+										error={!!errors.password}
+										helperText={errors.password ? errors.password?.message : ''}
+										fullWidth
+										margin='dense'
+									/>
+								)}
 							/>
-						)}
-					/>
-					<br />
-					<br />
-					<Button type='submit' variant='contained'>Login</Button>
-					
-					<br />
-					<br />
-				</form>
-			</div>
+							<br />
+							<br />
+							<div className='innerGridDiv'>
+							<Button type='submit' variant='contained'>
+								Login
+							</Button>
+							</div>
+
+							<br />
+							<br />
+						</form>
+						</div>
+					</Grid>
+				</Grid>
+			</Container>
 		</>
 	);
 };
