@@ -26,6 +26,8 @@ type FormValues = {
 	inputD: string;
 	constantA: number | string;
 	constantB: number | string;
+	constantC: number | string;
+	constantD: number | string;
 };
 
 // schema for yup validation ////////////////////
@@ -33,6 +35,8 @@ type FormValues = {
 const schema = yup.object().shape({
 	inputA: yup.string().required('This field is required.'),
 	inputB: yup.string().required('This field is required.'),
+	inputC: yup.string().required('This field is required.'),
+	inputD: yup.string().required('This field is required.'),
 	constantA: yup
 		.number()
 		.typeError('Must be a number.')
@@ -43,12 +47,24 @@ const schema = yup.object().shape({
 		.typeError('Must be a number.')
 		.required('This field is required.')
 		.integer(),
+	constantC: yup
+		.number()
+		.typeError('Must be a number.')
+		.required('This field is required.')
+		.integer(),
+	constantD: yup
+		.number()
+		.typeError('Must be a number.')
+		.required('This field is required.')
+		.integer(),
 });
 
 //modalReducer programatically determines modal content/actions ////////////////////
 
 const MODAL_A = 'MODAL_A';
 const MODAL_B = 'MODAL_B';
+const MODAL_C = 'MODAL_C';
+const MODAL_D = 'MODAL_D';
 const CLOSE = 'CLOSE';
 
 const modalReducer = (state: any, action: any) => {
@@ -64,6 +80,20 @@ const modalReducer = (state: any, action: any) => {
 			return {
 				heading: `Modal 1B`,
 				content: `Content for Modal 1B goes here.`,
+
+				show: true,
+			};
+			case MODAL_C:
+			return {
+				heading: `Modal 1C`,
+				content: `Content for Modal 1C goes here.`,
+
+				show: true,
+			};
+			case MODAL_D:
+			return {
+				heading: `Modal 1D`,
+				content: `Content for Modal 1D goes here.`,
 
 				show: true,
 			};
@@ -269,7 +299,7 @@ const HealthandWellbeing: React.FC = () => {
 											</IconButton>
 
 											<div className='textDivs'>
-												Area of rainfall collection structures (ft<sup>2</sup>)
+												Annual rainfall (ft)
 											</div>
 											<Controller
 												name='inputB'
@@ -298,14 +328,14 @@ const HealthandWellbeing: React.FC = () => {
 												justifyContent: 'space-evenly',
 											}}
 										>
-											<IconButton onClick={() => dispatchModalAction(MODAL_A)}>
+											<IconButton onClick={() => dispatchModalAction(MODAL_C)}>
 												<HelpIcon></HelpIcon>
 											</IconButton>
 											<div className='textDivs'>
-												Area of rainfall collection structures (ft<sup>2</sup>)
+												Area of office space (ft<sup>2</sup>)
 											</div>
 											<Controller
-												name='inputA'
+												name='inputC'
 												control={control}
 												defaultValue=''
 												render={({ field }) => (
@@ -313,9 +343,9 @@ const HealthandWellbeing: React.FC = () => {
 														{...field}
 														label='Input'
 														variant='outlined'
-														error={!!errors.inputA}
+														error={!!errors.inputC}
 														helperText={
-															errors.inputA ? errors.inputA?.message : ''
+															errors.inputC ? errors.inputC?.message : ''
 														}
 													/>
 												)}
@@ -331,14 +361,14 @@ const HealthandWellbeing: React.FC = () => {
 												justifyContent: 'space-evenly',
 											}}
 										>
-											<IconButton onClick={() => dispatchModalAction(MODAL_A)}>
+											<IconButton onClick={() => dispatchModalAction(MODAL_D)}>
 												<HelpIcon></HelpIcon>
 											</IconButton>
 											<div className='textDivs'>
-												Area of rainfall collection structures (ft<sup>2</sup>)
+												Area of commercial space (ft<sup>2</sup>)
 											</div>
 											<Controller
-												name='inputA'
+												name='inputD'
 												control={control}
 												defaultValue=''
 												render={({ field }) => (
@@ -346,9 +376,9 @@ const HealthandWellbeing: React.FC = () => {
 														{...field}
 														label='Input'
 														variant='outlined'
-														error={!!errors.inputA}
+														error={!!errors.inputD}
 														helperText={
-															errors.inputA ? errors.inputA?.message : ''
+															errors.inputD ? errors.inputD?.message : ''
 														}
 													/>
 												)}
@@ -390,7 +420,7 @@ const HealthandWellbeing: React.FC = () => {
 												justifyContent: 'space-evenly',
 											}}
 										>
-											<IconButton>
+											<IconButton onClick={() => dispatchModalAction(MODAL_A)}>
 												<HelpIcon></HelpIcon>
 											</IconButton>
 											<div className='textDivs'>
@@ -423,7 +453,7 @@ const HealthandWellbeing: React.FC = () => {
 												justifyContent: 'space-evenly',
 											}}
 										>
-											<IconButton>
+											<IconButton onClick={() => dispatchModalAction(MODAL_B)}>
 												<HelpIcon></HelpIcon>
 											</IconButton>
 
@@ -442,6 +472,72 @@ const HealthandWellbeing: React.FC = () => {
 														error={!!errors.constantB}
 														helperText={
 															errors.constantB ? errors.constantB?.message : ''
+														}
+													/>
+												)}
+											/>
+										</div>
+										<div
+											style={{
+												width: '100%',
+												display: 'flex',
+												alignItems: 'center',
+												flex: 1,
+												padding: 16,
+												justifyContent: 'space-evenly',
+											}}
+										>
+											<IconButton onClick={() => dispatchModalAction(MODAL_C)}>
+												<HelpIcon></HelpIcon>
+											</IconButton>
+											<div className='textDivs'>
+												Area of rainfall collection structures (ft<sup>2</sup>)
+											</div>
+											<Controller
+												name='constantC'
+												control={control}
+												defaultValue={''}
+												render={({ field }) => (
+													<TextField
+														{...field}
+														label='Constant'
+														variant='outlined'
+														error={!!errors.constantC}
+														helperText={
+															errors.constantC ? errors.constantC?.message : ''
+														}
+													/>
+												)}
+											/>
+										</div>
+										<div
+											style={{
+												width: '100%',
+												display: 'flex',
+												alignItems: 'center',
+												flex: 1,
+												padding: 16,
+												justifyContent: 'space-evenly',
+											}}
+										>
+											<IconButton onClick={() => dispatchModalAction(MODAL_D)}>
+												<HelpIcon></HelpIcon>
+											</IconButton>
+											<div className='textDivs'>
+												Area of rainfall collection structures (ft<sup>2</sup>)
+											</div>
+											<Controller
+												name='constantD'
+												control={control}
+												defaultValue={''}
+												render={({ field }) => (
+													<TextField
+														{...field}
+														label='Constant'
+														variant='outlined'
+														error={!!errors.constantD}
+														helperText={
+															errors.constantD ? errors.constantD?.message : ''
 														}
 													/>
 												)}
